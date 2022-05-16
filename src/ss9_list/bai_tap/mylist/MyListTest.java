@@ -1,6 +1,4 @@
-package ss9_list.mylist;
-
-import ss9_list.mylist.MyList;
+package ss9_list.bai_tap.mylist;
 
 public class MyListTest {
 
