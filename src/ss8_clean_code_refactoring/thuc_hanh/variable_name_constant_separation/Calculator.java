@@ -1,4 +1,4 @@
-package ss7_clean_code_refactoring.thuc_hanh.variable_name_constant_separation;
+package ss8_clean_code_refactoring.thuc_hanh.variable_name_constant_separation;
 
 public class Calculator {
 

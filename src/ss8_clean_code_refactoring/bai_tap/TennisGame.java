@@ -1,62 +1,76 @@
-package ss7_clean_code_refactoring.bai_tap;
+package ss8_clean_code_refactoring.bai_tap;
+
+import com.sun.istack.internal.NotNull;
+
+import java.util.Scanner;
 
 public class TennisGame {
-    public static String getScore(String player1Name, String player2Name, int m_score1, int m_score2) {
-        String score = "";
-        int tempScore=0;
-        if (m_score1==m_score2)
-        {
-            switch (m_score1)
-            {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                case 3:
-                    score = "Forty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
+    public static final int TWO = 2;
+    public static final int THREE = 3;
 
+    public static String getScore(String playerOne, String playerTwo, int firstScore, int secondScore) {
+        String count = "";
+        int result;
+        if (firstScore == secondScore) {
+            switch (firstScore) {
+                case ZERO:
+                    return "Love-All";
+                case ONE:
+                    return "Fifteen-All";
+                case TWO:
+                    return "Thirty-All";
+                case THREE:
+                    return "Forty-All";
+                default:
+                    return "Deuce";
             }
-        }
-        else if (m_score1>=4 || m_score2>=4)
-        {
-            int minusResult = m_score1-m_score2;
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
-            else score ="Win for player2";
-        }
-        else
-        {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
+        } else if (firstScore >= 4 || secondScore >= 4) {
+            count = getString(firstScore, secondScore);
+        } else {
+            for (int i = 1; i < 3; i++) {
+                if (i == 1) result = firstScore;
+                else {
+                    count = "-";
+                    result = secondScore;
+                }
+                switch (result) {
+                    case ZERO:
+                        return count + "Love";
+                    case ONE:
+                        return count + "Fifteen";
+                    case TWO:
+                        return count + "Thirty";
+                    case THREE:
+                        return count + "Forty";
                 }
             }
         }
-        return score;
+        return count;
+    }
+
+    @NotNull
+    private static String getString(int firstScore, int secondScore) {
+        String count;
+        int minusResult = firstScore - secondScore;
+        if (minusResult == 1) count = "Advantage player1";
+        else if (minusResult == -1) count = "Advantage player2";
+        else if (minusResult >= 2) count = "Win for player1";
+        else count = "Win for player2";
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter player 1: ");
+        String playerOne = scanner.nextLine();
+        System.out.print("Enter player 2: ");
+        String playerTwo = scanner.nextLine();
+        System.out.print("Enter the first: ");
+        int firstScore = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter the second: ");
+        int secondScore = Integer.parseInt(scanner.nextLine());
+        System.out.println(TennisGame.getScore(playerOne, playerTwo, firstScore, secondScore));
     }
 }

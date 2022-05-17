@@ -1,4 +1,4 @@
-package ss7_clean_code_refactoring.thuc_hanh.constant_separation;
+package ss8_clean_code_refactoring.thuc_hanh.constant_separation;
 
 public class Cylinder {
     public static double getVolume(int radius, int height) {
