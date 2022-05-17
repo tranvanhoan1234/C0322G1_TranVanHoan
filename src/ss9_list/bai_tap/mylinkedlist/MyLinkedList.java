@@ -13,6 +13,7 @@ public class MyLinkedList<E> {
             return this.data;
         }
 
+
     }//phần tử đầu tiên của danh sách liên kết
 
     private Node head;

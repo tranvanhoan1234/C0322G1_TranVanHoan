@@ -1,7 +1,5 @@
 package ss9_list.bai_tap.mylinkedlist;
 
-import ss9_list.bai_tap.mylinkedlist.MyLinkedList;
-
 public class MyLinkedListTest {
     public static void main(String[] args) {
         class Student {
@@ -41,8 +39,8 @@ public class MyLinkedListTest {
         myLinkedList.addFirst(student1);
         myLinkedList.addFirst(student2);
         myLinkedList.addFirst(student3);
-        myLinkedList.add(3, student4);
-        myLinkedList.remove(2);
+        myLinkedList.add(0,student4);
+        myLinkedList.remove(0);
         for (int i = 0; i < myLinkedList.size(); i++) {
             Student student = (Student) myLinkedList.get(i);
             System.out.println(student.getName());
