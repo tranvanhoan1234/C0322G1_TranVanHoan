@@ -1,6 +1,6 @@
-package ss7_abstraction.bai_tap.interface_circle2;
+package ss7_abstraction.bai_tap.interface_circle1;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape implements IResize {
     private double width = 1.0D;
     private double length = 1.0D;
 
@@ -45,8 +45,8 @@ public class Rectangle extends Shape{
     public void resize(double percent) {
         this.width *= percent;
         this.length *= percent;
+        System.out.println(this);
     }
-
     public String toString() {
         return "Width = " + this.width + "\nLenght = " + this.length + "\nArea = " + this.getArea() + "\nPerimeter = " + this.getPerimeter() + "\n";
     }

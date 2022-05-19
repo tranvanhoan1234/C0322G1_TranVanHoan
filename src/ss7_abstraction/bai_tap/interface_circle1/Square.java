@@ -1,4 +1,4 @@
-package ss7_abstraction.bai_tap.interface_circle2;
+package ss7_abstraction.bai_tap.interface_circle1;
 
 public class Square extends Rectangle {
     public Square() {
@@ -36,8 +36,10 @@ public class Square extends Rectangle {
         return this.getSide() * 4.0D;
     }
 
+    @Override
     public void resize(double percent) {
         this.setSide(this.getSide() * percent);
+        System.out.println(this);
     }
 
     public String toString() {

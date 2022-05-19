@@ -1,6 +1,6 @@
-package ss7_abstraction.bai_tap.interface_circle2;
+package ss7_abstraction.bai_tap.interface_circle1;
 
-public abstract class Shape {
+public abstract class Shape implements IResize{
     private String color = "green";
     private boolean filled = true;
 
@@ -35,6 +35,7 @@ public abstract class Shape {
                 + " and "
                 + (isFilled() ? "filled" : "not filled");
     }
+
     public void resize(double percent) {
     }
 }
