@@ -10,9 +10,9 @@ public class Demerging {
         Queue<String> queueMale = new LinkedList<>();
         Queue<String> queueFemale = new LinkedList<>();
         List<Person> list = new ArrayList<>();
-        Person person = new Person("hoàn", "nam", "22/1995");
-        Person person1 = new Person("", "nữ", "1/33/1991");
-        Person person2 = new Person("Hoàn", "nam", "18/08/1996");
+        Person person = new Person("hoàn1", "nữ", "22/1995");
+        Person person1 = new Person("hoàn2", "nam", "1/33/1991");
+        Person person2 = new Person("Hoàn3", "nam", "18/08/1996");
 
         list.add(person);
         list.add(person1);
