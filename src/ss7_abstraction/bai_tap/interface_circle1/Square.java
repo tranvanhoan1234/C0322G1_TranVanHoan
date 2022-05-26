@@ -28,11 +28,11 @@ public class Square extends Rectangle {
         this.setSide(length);
     }
 
-    public double getArea() {
+    public double xgetArea() {
         return this.getSide() * this.getSide();
     }
 
-    public double getPerimeter() {
+    public double RgetPerimeter() {
         return this.getSide() * 4.0D;
     }
 

@@ -20,9 +20,6 @@ public class Square extends Rectangle implements Colorable {
     public static void main(String[] args) {
 
         Shape[] shapes = new Shape[]{new Rectangle(6, 10), new Circle(4), new Square(1, 3)};
-//        shapes[0]=new Square();
-//        shapes[1]=new Circle(3.4);
-//        shapes[2]=new Rectangle(10,5);
         Shape[] shapes1 = shapes;
         int var4 = shapes.length;
 

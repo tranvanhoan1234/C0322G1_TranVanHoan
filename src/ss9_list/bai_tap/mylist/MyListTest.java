@@ -48,14 +48,11 @@ package ss9_list.bai_tap.mylist;
         studentMyArrayList.add(c, 7);
         studentMyArrayList.add(d, 8);
         studentMyArrayList.add(f, 9);
-
-        studentMyArrayList.remove(3);
-
+        studentMyArrayList.remove(2);
         for (int i = 0; i < studentMyArrayList.size(); i++) {
-            MyListTest student = (MyListTest) studentMyArrayList.elements[i];
-            System.out.println(student.getName());
+            MyListTest student = new MyListTest();
+            System.out.println(student.getId());
 
         }
-
     }
 }

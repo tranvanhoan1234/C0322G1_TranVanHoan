@@ -1,6 +1,6 @@
-package ss7_abstraction.thuc_hanh;
+package ss7_abstraction.thuc_hanh.class_animal;
 
-public class Chicken extends Animal implements Idible{
+public class Chicken extends Animal implements Idible {
     @Override
     public String makeSound() {
         return "tran van hoàn";

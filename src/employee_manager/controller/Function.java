@@ -20,7 +20,6 @@ public class Function {
 
     public static void displaymanage() {
 
-        boolean flag = true;
         do {
             System.out.println("-------manage-------\n"
                     + "1.student : \n"
@@ -37,13 +36,15 @@ public class Function {
                 case 3:
                     System.exit(3);
                     break;
+                default:
+                    System.out.println("k có xin nhập lại : ");
             }
-        } while (flag);
+        } while (true);
     }
 
     public static void displayStudent() {
         StudentSeriver studentSeriver = new StudentSeriver();
-        boolean flag = true;
+
         do {
             System.out.println("-----------lựa chọn---------- \n"
                     + "1.display \n"
@@ -66,16 +67,16 @@ public class Function {
                     studentSeriver.search();
                     break;
                 case 5:
-                    flag = false;
-                    System.out.println();
-                    break;
+                    return;
+                default:
+                    System.out.println("nhập k đúng xin nhập lại : ");
             }
-        } while (flag);
+        } while (true);
     }
 
     public static void displayTeacher() {
         TeacherSeriver teacherSeriver = new TeacherSeriver();
-        boolean flag = true;
+
         do {
             System.out.println("-----------lựa chọn---------- \n"
                     + "1.display \n"
@@ -98,11 +99,11 @@ public class Function {
                     teacherSeriver.search();
                     break;
                 case 5:
-                    flag = false;
-                    System.out.println();
-                    break;
+                    return;
+                default:
+                    System.out.println("nhập không đúng xin nhập lại: ");
             }
-        } while (flag);
+        } while (true);
     }
 }
 

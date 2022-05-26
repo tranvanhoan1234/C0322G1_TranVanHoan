@@ -54,7 +54,7 @@ public class DisplayCompany {
 
         while (true) {
             System.out.println("1.sắp xếp theo lương\n"
-                    + "2.sắp xếp theo tên\n4" +
+                    + "2.sắp xếp theo tên\n" +
                     "3.quay lại menu");
             Integer choice = Integer.valueOf(scanner.nextLine());
             switch (choice) {

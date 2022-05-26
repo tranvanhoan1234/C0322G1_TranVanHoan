@@ -1,4 +1,4 @@
-package ss7_abstraction.thuc_hanh;
+package ss7_abstraction.thuc_hanh.class_animal;
 
 public class Apple extends Fruit {
 

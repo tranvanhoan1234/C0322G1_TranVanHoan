@@ -6,14 +6,15 @@ import employee_manager.model.Teacher;
 
 import java.util.Scanner;
 
-import static employee_manager.controller.Function.count;
 import static employee_manager.controller.Function.persons;
+import static employee_manager.controller.Function.scanner;
 
 public class TeacherSeriver implements ISeriverTeacher {
     static Scanner scanner = new Scanner(System.in);
 
-    static {
-        persons[0] = new Teacher(2, "thuận2", 15, "bê đê", 1111);
+    static {persons[0] = new Teacher(1, "thuận1", 15, "đẹp trai", 1111);
+        persons[1] = new Teacher(2, "thuận2", 15, "đẹp trai", 1111);
+        persons[2] = new Teacher(3, "thuận3", 15, "đẹp trai", 1111);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class TeacherSeriver implements ISeriverTeacher {
     public void display() {
         for (Person s : persons) {
             if (s instanceof Teacher)
-                System.out.print(s);
+                System.out.println(s);
         }
     }
 
@@ -54,18 +55,22 @@ public class TeacherSeriver implements ISeriverTeacher {
 
     @Override
     public void delete() {
+        boolean flag = true;
         System.out.println("nhập tên teach bạn muốn xóa : ");
         String input = scanner.nextLine();
-        boolean flag = true;
         for (int i = 0; i < persons.length; i++) {
-            if (persons[i] instanceof Student && input.equals(persons[i].getName())) {
-                flag = false;
+            if (persons[i] instanceof Teacher && input.equals(persons[i].getName())) {
+                for (int j = i + 1; j < persons.length - i; j++) {
+                    persons[i] = persons[j];
+                    System.out.println("đã xóa thành công : ");
+                    flag = false;
+                    break;
+                }
             }
-            for (int j = 0; j < (persons.length - 1); j++) {
-                persons[i] = persons[j];
-            }
-            count--;
-            System.out.println("xóa thành công : " + input);
         }
+        if (flag) {
+            System.out.println("không tìm thấy phần name : ");
+        }
+
     }
 }

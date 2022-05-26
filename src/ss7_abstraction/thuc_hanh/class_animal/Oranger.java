@@ -1,6 +1,8 @@
-package ss7_abstraction.thuc_hanh;
+package ss7_abstraction.thuc_hanh.class_animal;
 
-public class Oranger extends Fruit{
+import ss7_abstraction.thuc_hanh.class_animal.Fruit;
+
+public class Oranger extends Fruit {
 
 
     @Override

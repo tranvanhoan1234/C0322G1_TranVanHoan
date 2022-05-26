@@ -1,2 +1,18 @@
-package ss7_abstraction.thuc_hanh.interface_comparable;public class ComparableCircle {
+package ss7_abstraction.thuc_hanh.interface_comparable;
+
+public class ComparableCircle extends Cricle implements Comparable<ComparableCircle> {
+    public ComparableCircle() {
+    }
+    public ComparableCircle(String color, boolean filled, double radius) {
+        super(color, filled, radius);
+    }
+
+    @Override
+    public int compareTo(ComparableCircle o) {
+        if (getRadius() > o.getRadius())
+            return 1;
+        else if (getRadius() < o.getRadius()) return -1;
+        else return 1;
+    }
+
 }

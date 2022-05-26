@@ -32,15 +32,15 @@ public class MyLinkedListTest {
             }
         }
         MyLinkedList<Student> myLinkedList = new MyLinkedList<>();
-        Student student1 = new Student(1, "my");
-        Student student2 = new Student(2, "linkedlist");
-        Student student3 = new Student(3, "à ");
-        Student student4 = new Student(4, "  nha");
+        Student student1 = new Student(1, "5");
+        Student student2 = new Student(2, "2");
+        Student student3 = new Student(3, "3 ");
+        Student student4 = new Student(4, " 4");
         myLinkedList.addFirst(student1);
         myLinkedList.addFirst(student2);
         myLinkedList.addFirst(student3);
-        myLinkedList.add(0,student4);
-        myLinkedList.remove(0);
+        myLinkedList.add(1, student4);
+        myLinkedList.addlist(student1);
         for (int i = 0; i < myLinkedList.size(); i++) {
             Student student = (Student) myLinkedList.get(i);
             System.out.println(student.getName());

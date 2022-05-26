@@ -33,7 +33,6 @@ public class MyLinkedList<E> {
         head.next = temp;
         numNodes++;
     }
-
     public void addlist(E element) {
         // khai báo biến temp trỏ đến head
         Node temp = head;
@@ -46,13 +45,14 @@ public class MyLinkedList<E> {
         numNodes++;
     }
 
-    public void add(int index, E element) {
+    public void
+    add(int index, E element) {
         // khai báo biến temp trỏ đến head
         Node temp = head;
         //khai báo 1 node là holder
         Node holder;
         //cho con trỏ chạy đến vị trí index -1;
-        for (int i = 0; i < index - 1 && temp.next != null; i++) {
+            for (int i = 0; i < index - 1 && temp.next != null; i++) {
             temp = temp.next;
         }
         //cho hoder tham chiếu đến vị trí index.
@@ -123,7 +123,6 @@ public class MyLinkedList<E> {
     }
 
     public MyLinkedList<E> clone() {
-
 
         if (numNodes == 0) {
             throw new NullPointerException("linkidlist này null");

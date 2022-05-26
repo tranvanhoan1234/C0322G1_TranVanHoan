@@ -1,6 +1,8 @@
-package ss7_abstraction.thuc_hanh;
+package ss7_abstraction.thuc_hanh.class_animal;
 
-public class Tiger extends Animal{
+import ss7_abstraction.thuc_hanh.class_animal.Animal;
+
+public class Tiger extends Animal {
     @Override
     public String makeSound() {
         return "Trần văn hoàn";

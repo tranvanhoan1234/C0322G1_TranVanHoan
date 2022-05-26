@@ -7,10 +7,10 @@ public class LargestAscendingString {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+//        Scanner input = new Scanner(System.in);
 
-        System.out.print("Nhập chuỗi: ");
-        String string = input.nextLine();
+//        System.out.print("Nhập chuỗi: ");
+        String string ="Welcome";
 
         LinkedList<Character> max = new LinkedList<>();
         LinkedList<Character> list = new LinkedList<>();
@@ -40,7 +40,7 @@ public class LargestAscendingString {
         for (Character ch : max) { // 1 vòng lặp
             System.out.print(ch); // 1 câu lệnh
         }
-        System.out.println();
+        System.out.println(" : là chuỗi cố độ dài lớn nhất");
     }
 
 /*********************************************************************************

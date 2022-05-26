@@ -1,4 +1,4 @@
-package key_study.severis;
+package key_study.severis.bookingService;
 
 public class Booking {
 }

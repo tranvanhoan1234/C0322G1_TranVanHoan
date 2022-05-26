@@ -1,8 +1,12 @@
 package giai_thuat;
 
-public class Tong {
-    public static boolean main(String[] args) {
-        int[] arr = {1, 2, 3, 3};
+public class soluTion {
+    public static void main(String[] args) {
+        int[] arr = {1, 5, 3,6};
+        System.out.println(soluTion(arr));
+    }
+
+    public static boolean soluTion(int[] arr) {
         boolean flag = false;
         if (arr.length < 2) {
             return false;
@@ -23,6 +27,7 @@ public class Tong {
             }
         }
         return flag;
+
     }
 }
 

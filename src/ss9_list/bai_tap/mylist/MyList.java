@@ -2,25 +2,33 @@ package ss9_list.bai_tap.mylist;
 
 import java.util.Arrays;
 
-public class MyList<E> {
+public class MyList<dataTybe> {
 
     public int size = 0;
     //sức chứa arraylist
     public static final int DEFAULT_CAPACITY = 10;
     // mảng chứa các phần tử
-    public Object[] elements;
+    public dataTybe[] list;
+
+
+    /**
+     * Khởi tạo mảng ban đầu với chiều dài mặc định
+     */
+//    public MyList() {
+//        this.list = (dataType[]) new Object[DEFAULT_CAPACITY];
+//    }
 
     //contructor không tham số sức chứa mặc định là 10;
     public MyList() {
-        elements = new Object[DEFAULT_CAPACITY];
+       list =(dataTybe[]) new Object[DEFAULT_CAPACITY];
     }
 
     //contructor có tham số
-    public MyList(int capacity) {
-        if (capacity >= 0) {
-            elements = new Object[capacity];
+    public MyList(int size) {
+        if (size >= 0) {
+          list =(dataTybe[]) new Object[size];
         } else {
-            throw new IllegalArgumentException("capacity:  " + capacity);
+            throw new IllegalArgumentException("capacity:  " + size);
         }
         //pt trả về số lượng pt;
     }
@@ -32,65 +40,64 @@ public class MyList<E> {
     //pt clear arraylist,
     public void clean() {
         size = 0;
-        for (int i = 0; i < elements.length; i++) {
-            elements[i] = null;
+        for (int i = 0; i < list.length; i++) {
+            list[i] = null;
 
         }
     }
     // pt add 1 phần tư vào arraylist
 
-    public boolean add(E element) {
-        if (elements.length == size) {
-            this.ensureCapacity(5);
+    public boolean add(dataTybe element) {
+        if (list.length == size) {
+            this.ensureCapacity(10);
         }
-        elements[size] = element;
+        list[size] = element;
         size++;
         return true;
     }
 
-    public void add(E element, int index) {
-        if (index > elements.length) {
+    public void add(dataTybe element, int index) {
+        if (index > list.length) {
             throw new IllegalArgumentException("INDEX" + index);
-        } else if (elements.length == size) {
+        } else if (list.length == size) {
             ensureCapacity(5);
         }
-        if (elements[index] == null) {
-            elements[index] = element;
+        if (list[index] == null) {
+            list[index] = element;
         } else {
             for (int i = size + 1; i >= index; i--) {
-                elements[i] = elements[size - 1];
+                list[i] = list[size - 1];
 
             }
-            elements[index] = element;
+            list[index] = element;
             size++;
         }
     }
 
-    public boolean remove(int index) {
+    public void remove(int index) {
         if (index >= 0 && index < size) {
             for (int i = index; i < size; i++) {
-                elements[i] = elements[i + 1];
+                list[i] = list[i + 1];
             }
+            list[size -1]=null;
             size--;
-            return true;
         }
-        return false;
     }
 
-    public E get(int index) {
+    public dataTybe get(int index) {
         if (index >= 0 && index < size) {
-            return (E) elements[index];
+            return (list) [index];
         } else {
             throw new IndexOutOfBoundsException("Index: " + index);
         }
     }
 
     public void ensureCapacity(int minCapacity) {
-        if (minCapacity >= 1) {
-            int newSize = this.elements.length + minCapacity;
-            elements = Arrays.copyOf(elements, newSize);
+        if (minCapacity >= 10) {
+            int newSize = this.list.length + minCapacity;
+            list = Arrays.copyOf(list, newSize);
         } else {
-            throw new IllegalArgumentException("mincapecity: " + elements);
+            throw new IllegalArgumentException("mincapecity: " + list);
         }
     }
 }

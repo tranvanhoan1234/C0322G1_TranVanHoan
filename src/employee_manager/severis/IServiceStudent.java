@@ -1,6 +1,6 @@
 package employee_manager.severis;
 
-public interface ISeriverStudent {
+public interface IServiceStudent {
     void add();
 
     void delete();

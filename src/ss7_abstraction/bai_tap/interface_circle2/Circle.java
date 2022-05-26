@@ -46,7 +46,7 @@ public class Circle extends Shape {
 
     @Override
     public double resize(Rectangle rectangle) {
-        return rectangle.getPerimeter();
+        return rectangle.getArea();
     }
 
 }

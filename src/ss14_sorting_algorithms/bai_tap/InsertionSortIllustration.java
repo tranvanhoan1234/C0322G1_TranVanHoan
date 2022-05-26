@@ -16,6 +16,7 @@ public class InsertionSortIllustration {
 //            vị trí hiện tại của họ
             while (j >= 0 && arr[j] > key) {
                 arr[j + 1] = arr[j];
+
                 j--;
             }
             arr[j + 1] = key;

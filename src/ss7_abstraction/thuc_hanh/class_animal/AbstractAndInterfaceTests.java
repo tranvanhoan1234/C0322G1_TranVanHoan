@@ -1,4 +1,4 @@
-package ss7_abstraction.thuc_hanh;
+package ss7_abstraction.thuc_hanh.class_animal;
 
 public class AbstractAndInterfaceTests  {
     public static void main(String[] args) {
@@ -11,7 +11,8 @@ public class AbstractAndInterfaceTests  {
                Chicken edible =(Chicken) animal;
                 System.out.println(edible.howToEat());
             }
-        }Fruit[] fruit =new Fruit [2];
+        }
+        Fruit[] fruit =new Fruit [2];
            fruit[0] =new Oranger();
            fruit[1]=new Apple();
         for (Fruit f: fruit) {
