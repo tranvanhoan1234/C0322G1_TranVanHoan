@@ -1,7 +1,6 @@
 package key_study.uitl.reader_writer;
 
 import key_study.severis.person.Customer;
-import key_study.severis.person.Employee;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -54,17 +53,18 @@ public class ReaderWriter {
         }
         return stringList;
     }
-    public static List<Employee> readFileemploye() {
-        List<String> stringList = readFileCsvToListStrinng(PATH_EMPLOYEE);
-        List<Employee> employeeList = new ArrayList<>();
+
+    public static List<Customer> readFileCustumer() {
+        List<String> stringList = readFileCsvToListStrinng(PATH_CUSTOMER);
+        List<Customer> customerList = new ArrayList<>();
         String[] array = null;
-        Employee employee = null;
+        Customer customer = null;
         // chuyển listSTring => líitStudent
-        for (String str: stringList) {
+        for (String str : stringList) {
             array = str.split(",");
-//            employee = new Employee( array[0],array[1],array[2],Integer.parseInt(array[3]),Long.parseLong(array[4]),array[5],Integer.parseInt(array[6]),array[7],Double.parseDouble(array[8]));
-            employeeList.add(employee);
+            customer = new Customer(array[0], array[1], array[2], Integer.parseInt(array[3]), Long.parseLong(array[4]), array[5], Integer.parseInt(array[6]), array[7], array[8]);
+            customerList.add(customer);
         }
-        return employeeList;
+        return customerList;
     }
 }

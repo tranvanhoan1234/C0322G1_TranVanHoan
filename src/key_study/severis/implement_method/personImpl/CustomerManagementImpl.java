@@ -15,6 +15,7 @@ public class CustomerManagementImpl implements ICustomerManagement {
 
     @Override
     public void displayCustomer() {
+        customerList =ReaderWriter.readFileCustumer();
         for (Customer customer : customerList) {
             System.out.println(customer);
         }
@@ -24,7 +25,6 @@ public class CustomerManagementImpl implements ICustomerManagement {
 //    , String gmail, Integer customerCode, String typeOfGuest, String address
     @Override
     public void addCustomer() {
-
         System.out.println("thêm ten khách hàng : ");
         String fullName = scanner.nextLine();
         System.out.println("thêm ngày sinh khách hàng: ");
@@ -50,11 +50,11 @@ public class CustomerManagementImpl implements ICustomerManagement {
 
     @Override
     public void editCustomer() {
-        System.out.println("nhập id muốn xóa : ");
-        Integer customerCode1 = Integer.valueOf(scanner.nextLine());
+        System.out.println("nhập tên muốn xóa : ");
+        String customerCode1 = scanner.nextLine();
         boolean flag = true;
         for (int i = 0; i < customerList.size(); i++) {
-            if (customerList.get(i).getCustomerCode().equals(customerCode1)) {
+            if (customerList.get(i).getFullName().equals(customerCode1)) {
                 System.out.println("thêm ten khách hàng : ");
                 String fullName = scanner.nextLine();
                 System.out.println("thêm ngày sinh khách hàng: ");
