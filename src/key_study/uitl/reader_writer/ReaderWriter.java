@@ -1,5 +1,8 @@
 package key_study.uitl.reader_writer;
 
+import key_study.model.facility.House;
+import key_study.model.facility.Room;
+import key_study.model.facility.Villa;
 import key_study.model.person.Customer;
 import key_study.model.person.Employee;
 
@@ -10,9 +13,9 @@ import java.util.List;
 public class ReaderWriter {
     private final static String PATH_CUSTOMER = "src/key_study/uitl/data/customer.csv";
     private final static String PATH_EMPLOYEE = "src/key_study/uitl/data/employee.csv";
-    private final static String PATH_VILLA = "";
-    private final static String PATH_HOUSE = "";
-    private final static String PATH_ROOM = "";
+    private final static String PATH_VILLA = "src/key_study/uitl/data/villa.csv";
+    private final static String PATH_HOUSE = "src/key_study/uitl/data/house.csv";
+    private final static String PATH_ROOM = "src/key_study/uitl/data/room.csv";
 
 //    private final static String COMMA = ",";
 
@@ -36,7 +39,7 @@ public class ReaderWriter {
     }
 
     public static void writeEmployee(List<Employee> list) {
-        File file = new File("src/key_study/uitl/data/employee.csv");
+        File file = new File(PATH_EMPLOYEE);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
@@ -44,6 +47,56 @@ public class ReaderWriter {
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Employee employee : list) {
               bufferedWriter.write(employee.writerPerson());
+                bufferedWriter.newLine();
+
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeVilla(List<Villa> list) {
+        File file = new File(PATH_VILLA);
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            fileWriter = new FileWriter(file, false);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            for (Villa villa : list) {
+                bufferedWriter.write(villa.readEndWriterFacility());
+                bufferedWriter.newLine();
+
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } public static void writeHouse(List<House> list) {
+        File file = new File(PATH_HOUSE);
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            fileWriter = new FileWriter(file, false);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            for (House house : list) {
+                bufferedWriter.write(house.readEndWriterFacility());
+                bufferedWriter.newLine();
+
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeRoom(List<Room> list) {
+        File file = new File(PATH_ROOM);
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            fileWriter = new FileWriter(file, false);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            for (Room room : list) {
+                bufferedWriter.write(room.readEndWriterFacility());
                 bufferedWriter.newLine();
 
             }
@@ -81,7 +134,7 @@ public class ReaderWriter {
         Customer customer = null;
         for (String str : stringList) {
             array = str.split(",");
-            customer = new Customer(array[0], array[1], 2, array[2], Integer.parseInt(array[3]), Long.parseLong(array[4]), array[5], Integer.parseInt(array[6]), array[7], array[8]);
+            customer = new Customer(Integer.parseInt(array[0]), array[1], 2, array[2], Integer.parseInt(array[3]), Long.parseLong(array[4]), array[5], array[6], array[7], array[8]);
             customerList.add(customer);
         }
         return customerList;
@@ -98,5 +151,41 @@ public class ReaderWriter {
             employees.add(employee);
         }
         return employees;
+    }
+    public static List<Villa> readFileVilla() {
+        List<String> stringList = readFileCsvToListStrinng(PATH_VILLA);
+        List<Villa> villas = new ArrayList<>();
+        String[] array = null;
+        Villa villas1 = null;
+        for (String str : stringList) {
+            array = str.split(",");
+            villas1 = new Villa(array[0],array[1],Double.parseDouble(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),Integer.parseInt(array[5]),array[6],Double.parseDouble(array[7]));
+            villas.add(villas1);
+        }
+        return villas;
+    }
+    public static List<House> readFilHouse() {
+        List<String> stringList = readFileCsvToListStrinng(PATH_HOUSE);
+        List<House> houses = new ArrayList<>();
+        String[] array = null;
+        House house = null;
+        for (String str : stringList) {
+            array = str.split(",");
+            house = new House(array[0],array[1],Double.parseDouble(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),Integer.parseInt(array[5]),array[6],array[7]);
+            houses.add(house);
+        }
+        return houses;
+    }
+    public static List<Room> readFilRoom() {
+        List<String> stringList = readFileCsvToListStrinng(PATH_ROOM);
+        List<Room> rooms = new ArrayList<>();
+        String[] array = null;
+        Room room = null;
+        for (String str : stringList) {
+            array = str.split(",");
+            room = new Room(array[0],array[1],Double.parseDouble(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),Integer.parseInt(array[5]),array[6] );
+            rooms.add(room);
+        }
+        return rooms;
     }
 }

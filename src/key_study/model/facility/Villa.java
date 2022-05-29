@@ -1,10 +1,18 @@
 package key_study.model.facility;
 
 public class Villa extends Facility {
+    private final static String COM = ",";
     private String roomStandard;
     private Double poolArea;
 
     public Villa() {
+    }
+
+    @Override
+    public String readEndWriterFacility() {
+        return this.getServiceCode() + COM + this.getServiceName() + COM +
+                this.getUsableArea() + COM + this.getRentalCosts() + COM + this.getMaximumNumberOfPeople()
+                + COM + this.getRentalType() + COM + this.getRoomStandard() + COM + getPoolArea();
     }
 
     public Villa(String serviceCode, String serviceName, double usableArea, Integer rentalCosts, Integer maximumNumberOfPeople, Integer rentalType, String roomStandard, Double poolArea) {

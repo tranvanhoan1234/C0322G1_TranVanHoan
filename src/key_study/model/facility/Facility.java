@@ -71,6 +71,7 @@ public abstract class Facility {
     public void setRentalType(Integer rentalType) {
         this.rentalType = rentalType;
     }
+    public abstract String readEndWriterFacility();
 
     @Override
     public String toString() {

@@ -20,7 +20,7 @@ public class ReadWriter {
     public static List<ProductManagement> readFile() {
         List<ProductManagement> products = new ArrayList<>();
         try (    FileInputStream fileInputStream = new FileInputStream("src/ss17_io_binary_file/bai_tap/uitl/data/product.csv");
-                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);){
+                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
             products = (List<ProductManagement>) objectInputStream.readObject();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

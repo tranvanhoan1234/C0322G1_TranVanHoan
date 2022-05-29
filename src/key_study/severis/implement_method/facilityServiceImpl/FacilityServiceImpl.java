@@ -4,6 +4,7 @@ import key_study.model.facility.Facility;
 import key_study.model.facility.House;
 import key_study.model.facility.Room;
 import key_study.model.facility.Villa;
+import key_study.uitl.reader_writer.ReaderWriter;
 
 import java.util.*;
 
@@ -11,9 +12,9 @@ public class FacilityServiceImpl implements IFacilityManagement {
     private static Scanner scanner = new Scanner(System.in);
     private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap();
     private static List<Facility> facilityList = new ArrayList<>();
-    private static final List<Villa> villaList = new LinkedList<>();
-    private static final List<House> houseList = new LinkedList<>();
-    private static final List<Room> roomList = new LinkedList<>();
+    private static  List<Villa> villaList = new LinkedList<>();
+    private static  List<House> houseList = new LinkedList<>();
+    private static  List<Room> roomList = new LinkedList<>();
 
     static {
         Villa villa1 = new Villa("vila", "VILA", 123.2, 123, 122, 121, "PRO", 2.3);
@@ -26,7 +27,9 @@ public class FacilityServiceImpl implements IFacilityManagement {
 
     @Override
     public void displayFacility() {
-
+        houseList = ReaderWriter.readFilHouse();
+        villaList=ReaderWriter.readFileVilla();
+        roomList=ReaderWriter.readFilRoom();
         for (House house : houseList) {
             addMaintenance(house);
         }
@@ -102,6 +105,7 @@ public class FacilityServiceImpl implements IFacilityManagement {
         House hose = new House(serviceCode, serviceName, usableArea, rentalCosts,
                 maximumNumberOfPeople, rentalType, roomStandard, numberOfFloors);
         houseList.add(hose);
+        ReaderWriter.writeHouse(houseList);
     }
 //    public Villa(String serviceCode, String serviceName, double usableArea, Integer rentalCosts, Integer maximumNumberOfPeople, Integer rentalType, String roomStandard, Double poolArea) {
 
@@ -125,6 +129,7 @@ public class FacilityServiceImpl implements IFacilityManagement {
         Double poolArea = Double.valueOf(scanner.nextLine());
         Villa villa = new Villa(serviceCode, serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, roomStandard, poolArea);
         villaList.add(villa);
+        ReaderWriter.writeVilla(villaList);
 
     }
 //    public Room(String serviceCode, String serviceName, double usableArea, Integer rentalCosts, Integer maximumNumberOfPeople, Integer rentalType, String freeServiceIncluded) {
@@ -147,5 +152,6 @@ public class FacilityServiceImpl implements IFacilityManagement {
         String freeServiceIncluded = scanner.nextLine();
         Room room = new Room(serviceCode, serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, freeServiceIncluded);
         roomList.add(room);
+        ReaderWriter.writeRoom(roomList);
     }
 }

@@ -13,7 +13,7 @@ public class Customer extends Person {
         return getFullName()+","+getDateOfBirth()+","+getGender()+","+getCitizenId()+","+getNumberPhone()+","+getGmail()+","+getCustomerCode()+","+getTypeOfGuest()+","+getAddress();
     }
 
-    public Customer(String fullName, String dateOfBirth, int i, String gender, Integer citizenId, Long numberPhone, String gmail, Integer customerCode, String typeOfGuest, String address) {
+    public Customer(Integer customerCode, String dateOfBirth, int i, String gender, Integer citizenId, Long numberPhone, String gmail, String fullName, String typeOfGuest, String address) {
         super(fullName, dateOfBirth, gender, citizenId, numberPhone, gmail);
         this.customerCode = customerCode;
         this.typeOfGuest = typeOfGuest;

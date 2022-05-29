@@ -1,4 +1,5 @@
 package key_study.severis.contactService;
 
-public class IContactService {
+public interface IContactService  {
+
 }

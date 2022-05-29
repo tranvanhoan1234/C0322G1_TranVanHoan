@@ -3,69 +3,64 @@ package key_study.model.booking;
 import key_study.model.facility.Facility;
 import key_study.model.person.Customer;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Objects;
 
 public class Booking {
-    private final static String COMMA = ",";
-    private final static String PATTERN = "dd-MM-yyyy";
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat(PATTERN);
-    private String bookingId;
-    private Date dateStart;
-    private Date dateEnd;
-    private String customerID;
+    private int bookingId;
+    private String dateStart;
+    private String dateEnd;
+    private int customerID;
     private String serviceName;
-    private String serviceId;
+    private String typeOfService;//loại hình dịch vụ
 
-    public Booking(int id, Customer customer, Facility facility, String starDate, String endDate) {
+
+    public Booking() {
+
     }
 
-    public Booking(String bookingId, Date dateStart, Date dateEnd, String customerID, String serviceName, String serviceId) {
+    public Booking(int bookingId, String dateStart, String dateEnd, int customerID, String serviceName, String typeOfService) {
         this.bookingId = bookingId;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.customerID = customerID;
         this.serviceName = serviceName;
-        this.serviceId = serviceId;
+        this.typeOfService = typeOfService;
     }
 
-    public static SimpleDateFormat getDateFormat() {
-        return dateFormat;
+    public Booking(int id, String starDate, String endDate, Customer customer, Facility facility) {
+
     }
 
-    public static void setDateFormat(SimpleDateFormat dateFormat) {
-        Booking.dateFormat = dateFormat;
-    }
 
-    public String getBookingId() {
+    public int getBookingId() {
         return bookingId;
     }
 
-    public void setBookingId(String bookingId) {
+    public void setBookingId(int bookingId) {
         this.bookingId = bookingId;
     }
 
-    public Date getDateStart() {
+    public String getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(String dateStart) {
         this.dateStart = dateStart;
     }
 
-    public Date getDateEnd() {
+    public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
     }
 
-    public String getCustomerID() {
+    public int getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(String customerID) {
+    public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
 
@@ -77,23 +72,25 @@ public class Booking {
         this.serviceName = serviceName;
     }
 
-    public String getServiceId() {
-        return serviceId;
+    public String getTypeOfService() {
+        return typeOfService;
     }
 
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
+    public void setTypeOfService(String typeOfService) {
+        this.typeOfService = typeOfService;
     }
+
 
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingId='" + bookingId + '\'' +
-                ", dateStart=" + dateStart +
-                ", dateEnd=" + dateEnd +
-                ", customerID='" + customerID + '\'' +
+                "bookingId=" + bookingId +
+                ", dateStart='" + dateStart + '\'' +
+                ", dateEnd='" + dateEnd + '\'' +
+                ", customerID=" + customerID +
                 ", serviceName='" + serviceName + '\'' +
-                ", serviceId='" + serviceId + '\'' +
+                ", typeOfService='" + typeOfService + '\'' +
                 '}';
     }
 }
+

@@ -168,9 +168,11 @@ public class FuramaController {
             switch (choice) {
                 case 1:
                     bookingService.addNewBooking();
+                    displayMainMenu();
                     break;
                 case 2:
                     bookingService.displayListBooking();
+                    displayMainMenu();
                     break;
                 case 3:
                     break;

@@ -18,16 +18,16 @@ public class BookingServiceImpl implements IBookingService {
     //    String fullName, String dateOfBirth, String gender, Integer citizenId, Long numberPhone
 //    , String gmail, Integer customerCode, String typeOfGuest, String address
     static {
-        customerList.add(new Customer("hoan", "11/23/1233", 2, "nam", 1, 2312312L, "@GMAIL", 1, "AAA", "2ASDASD"));
-        customerList.add(new Customer("thuAN", "11/23/1233", 3, "nam", 2, 2312312L, "@GMAIL", 1, "AAA", "2ASDASD"));
-        facilityIntegerMap.put(new Villa("vila", "VILA", 123.2, 123, 122, 121, "PRO", 2.3), 0);
-        facilityIntegerMap.put(new House("hose", "hose", 100.4, 19, 123, 123, "vip", "324"), 1);
-        facilityIntegerMap.put(new Room("room", "room", 1212.2, 22, 122, 12, "có chục em chân dài phục vụ"), 1);
+        customerList.add(new Customer(1,"name",1232,"nam",12,023123l,"@qưe","@ưqeqw","qqqw","123"));
+        customerList.add(new Customer(2,"name",1232,"nam",12,0121312l,"@qưe","@ưqeqw","qqqw","123"));
+        facilityIntegerMap.put(new Villa("vila1", "VILA", 123.2, 123, 122, 121, "PRO", 2.3), 0);
+        facilityIntegerMap.put(new Villa("vila2", "VILA", 123.2, 123, 122, 121, "PRO", 2.3), 0);
     }
 
     @Override
     public void addNewBooking() {
-        int id =0;
+
+        int id =1;
         if (!bookingSet.isEmpty()) {
             id = bookingSet.size();
         }
@@ -37,8 +37,8 @@ public class BookingServiceImpl implements IBookingService {
         String starDate = scanner.nextLine();
         System.out.println("ngày trả phòng : ");
         String endDate = scanner.nextLine();
-        Booking booking = new Booking(id, customer, facility, starDate, endDate);
-        bookingSet.add(booking);
+       Booking booking=new Booking(id,starDate,endDate,customer,facility);
+       bookingSet.add(booking);
         System.out.println("thêm vào thành công : ");
     }
 
