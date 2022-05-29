@@ -1,4 +1,4 @@
-package key_study.severis.person;
+package key_study.model.person;
 
 public class Employee extends Person {
     private Integer employeeCode;
@@ -11,7 +11,9 @@ public class Employee extends Person {
 
     @Override
     public String writerPerson() {
-        return null;
+        return this.getFullName() + "," + this.getDateOfBirth() + "," + this.getGender()
+                + "," + getCitizenId() + "," + this.getNumberPhone() + "," + "," + this.getGmail() + "," + this.getEmployeeCode() + "," + this.getLevel() + "," +
+                this.getPosition() + "," + this.getSalary();
     }
 
     public Employee(String fullName, String dateOfBirth, String gender, Integer citizenId, Long numberPhone, String gmail, Integer employeeCode, String level, String position, String salary) {

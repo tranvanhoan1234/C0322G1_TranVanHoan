@@ -1,4 +1,4 @@
-package key_study.severis.person;
+package key_study.model.person;
 
 public class Customer extends Person {
     private Integer customerCode;
@@ -13,7 +13,7 @@ public class Customer extends Person {
         return getFullName()+","+getDateOfBirth()+","+getGender()+","+getCitizenId()+","+getNumberPhone()+","+getGmail()+","+getCustomerCode()+","+getTypeOfGuest()+","+getAddress();
     }
 
-    public Customer(String fullName, String dateOfBirth, String gender, Integer citizenId, Long numberPhone, String gmail, Integer customerCode, String typeOfGuest, String address) {
+    public Customer(String fullName, String dateOfBirth, int i, String gender, Integer citizenId, Long numberPhone, String gmail, Integer customerCode, String typeOfGuest, String address) {
         super(fullName, dateOfBirth, gender, citizenId, numberPhone, gmail);
         this.customerCode = customerCode;
         this.typeOfGuest = typeOfGuest;

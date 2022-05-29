@@ -1,4 +1,4 @@
-package key_study.severis.facility;
+package key_study.model.facility;
 
 public class Villa extends Facility {
     private String roomStandard;

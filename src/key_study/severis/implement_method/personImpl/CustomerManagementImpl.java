@@ -1,6 +1,6 @@
 package key_study.severis.implement_method.personImpl;
 
-import key_study.severis.person.Customer;
+import key_study.model.person.Customer;
 import key_study.uitl.reader_writer.ReaderWriter;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class CustomerManagementImpl implements ICustomerManagement {
         String typeOfGuest = scanner.nextLine();
         System.out.println("thêm địa chỉ khách hàng : ");
         String address = scanner.nextLine();
-        Customer customer = new Customer(fullName, dateOfBirth, gender, citizenId, numberPhone, gmail, customerCode, typeOfGuest, address);
+        Customer customer = new Customer(fullName, dateOfBirth, 2, gender, citizenId, numberPhone, gmail, customerCode, typeOfGuest, address);
         customerList.add(customer);
         ReaderWriter.writeCustumer(customerList);
     }
@@ -73,7 +73,7 @@ public class CustomerManagementImpl implements ICustomerManagement {
                 String typeOfGuest = scanner.nextLine();
                 System.out.println("thêm địa chỉ khách hàng : ");
                 String address = scanner.nextLine();
-                Customer customer = new Customer(fullName, dateOfBirth, gender, citizenId, numberPhone, gmail, customerCode, typeOfGuest, address);
+                Customer customer = new Customer(fullName, dateOfBirth, 2, gender, citizenId, numberPhone, gmail, customerCode, typeOfGuest, address);
                 customerList.set(i, customer);
                 ReaderWriter.writeCustumer(customerList);
                 flag = false;

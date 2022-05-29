@@ -1,4 +1,4 @@
-package key_study.severis.facility;
+package key_study.model.facility;
 
 public class Room extends Facility {
     private String freeServiceIncluded;

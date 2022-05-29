@@ -1,49 +1,68 @@
 package key_study.severis.implement_method.facilityServiceImpl;
 
-import key_study.severis.facility.Facility;
-import key_study.severis.facility.House;
-import key_study.severis.facility.Room;
-import key_study.severis.facility.Villa;
+import key_study.model.facility.Facility;
+import key_study.model.facility.House;
+import key_study.model.facility.Room;
+import key_study.model.facility.Villa;
 
 import java.util.*;
 
 public class FacilityServiceImpl implements IFacilityManagement {
-    private static final List<Facility> facilityList = new ArrayList<>();
-    private static final List<House> houseList = new LinkedList<>();
+    private static Scanner scanner = new Scanner(System.in);
+    private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap();
+    private static List<Facility> facilityList = new ArrayList<>();
     private static final List<Villa> villaList = new LinkedList<>();
+    private static final List<House> houseList = new LinkedList<>();
     private static final List<Room> roomList = new LinkedList<>();
 
     static {
-
-        House houseList1 = new House("hs123", "hose", 100.4, 19, 123, 123, "vip", "324");
-        Villa villa1 = new Villa("VILA1232", "VILA", 123.2, 123, 122, 121, "PRO", 2.3);
-        Room room = new Room("room123", "room", 1212.2, 22, 122, 12, "có chục em chân dài phục vụ");
-        houseList.add(houseList1);
-        villaList.add(villa1);
-        roomList.add(room);
+        Villa villa1 = new Villa("vila", "VILA", 123.2, 123, 122, 121, "PRO", 2.3);
+        House houseList1 = new House("hose", "hose", 100.4, 19, 123, 123, "vip", "324");
+        Room room = new Room("room", "room", 1212.2, 22, 122, 12, "có chục em chân dài phục vụ");
+        facilityIntegerMap.put(houseList1, 1);
+        facilityIntegerMap.put(villa1, 1);
+        facilityIntegerMap.put(room, 1);
     }
-
-    private final Map<Facility, Integer> facilityMap = new LinkedHashMap();
-    private final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void displayFacility() {
 
         for (House house : houseList) {
-            System.out.println(house);
+            addMaintenance(house);
         }
         for (Villa villa : villaList) {
-            System.out.println(villa);
+            addMaintenance(villa);
         }
         for (Room room : roomList) {
-            System.out.println(room);
+            addMaintenance(room);
+        }
+        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+            System.out.println("tên dịch vụ: " + entry.getKey().getServiceCode());
+            System.out.println("số lần: " + entry.getValue());
+        }
+    }
+    @Override
+    public void addMaintenance(Facility facility) {
+        if (facilityIntegerMap.isEmpty()) {
+            facilityIntegerMap.put(facility, 1);
+        } else {
+            boolean flag = false;
+            for (Facility key : facilityIntegerMap.keySet()) {
+                if (facility.equals(key)) {
+                    checkMaintenance(key);
+                    facilityIntegerMap.put(key, facilityIntegerMap.get(key) + 1);
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                facilityIntegerMap.put(facility, 1);
+            }
         }
     }
 
-
     @Override
     public void displayMaintenance() {
-
         if (!facilityList.isEmpty()) {
             for (Facility f : facilityList) {
                 System.out.println(f);
@@ -51,38 +70,16 @@ public class FacilityServiceImpl implements IFacilityManagement {
         } else {
             System.out.println("danh sach rong");
         }
-
     }
-//    public void facilityMaintenance(Facility facility) {
-//        if (facilityIntegerMap.get(facility) >= 4) {
-//            System.out.println("Service is under maintenance!");
-//            facilityList.add(facility);
-//            facilityIntegerMap.put(facility, 1);
-//        }
-//    }
 
-//    @Override
-//    public void addMaintenance(Facility facility) {
-//        Set<Facility> facilityKey = facilityIntegerMap.keySet();
-//
-//        if (facilityIntegerMap.isEmpty()) {
-//            facilityIntegerMap.put(facility, 1);
-//        } else {
-//            boolean flag = true;
-//            for (Facility key : facilityKey) {
-//                if (facility.equals(key)) {
-//                    facilityMaintenance(facility);
-//                    facilityIntegerMap.put(key, facilityIntegerMap.get(key) + 1);
-//                    flag = false;
-//                    break;
-//                }
-//            }
-//            if (flag) {
-//                facilityIntegerMap.put(facility, 1);
-//            }
-//        }
-//    }
-
+    @Override
+    public void checkMaintenance(Facility facility) {
+        if (facilityIntegerMap.get(facility) >= 2) {
+            System.out.println("Service is under maintenance!");
+            facilityList.add(facility);
+            facilityIntegerMap.put(facility, 0);
+        }
+    }
 
     @Override
     public void addHose() {

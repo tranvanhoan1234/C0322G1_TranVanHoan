@@ -1,4 +1,4 @@
-package key_study.severis.person;
+package key_study.model.person;
 
 public abstract class Person {
     private String fullName;

@@ -1,23 +1,25 @@
 package key_study.severis.implement_method.personImpl;
 
-import key_study.severis.person.Employee;
-import key_study.severis.person.Person;
+import key_study.model.person.Employee;
+import key_study.model.person.Person;
+import key_study.uitl.reader_writer.ReaderWriter;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeManagementImpl implements IEmployeeManagement {
-    private static List<Employee> personArrayList = new ArrayList<>();
+    private static List<Employee> personArrayList = new LinkedList<>();
     private Scanner scanner = new Scanner(System.in);
-
-    static {
-        Employee employee1 = new Employee("hoan,", "12/1/1996", "nam", 123123, 23423423L, "@hoan123123", 1, "vip", "sieu cap pro", "10000");
-        personArrayList.add(employee1);
-    }
+//
+//    static {
+//        Employee employee1 = new Employee("hoan,", "12/1/1996", "nam", 123123, 23423423L, "@hoan123123", 1, "vip", "sieu cap pro", "10000");
+//        personArrayList.add(employee1);
+//    }
 
     @Override
     public void displayEmployee() {
+       personArrayList=ReaderWriter.readFileEmployee();
         for (Person employee : personArrayList) {
             System.out.println(employee);
         }
@@ -27,7 +29,6 @@ public class EmployeeManagementImpl implements IEmployeeManagement {
 
     @Override
     public void addEmployee() {
-//        Integer choice= Integer.valueOf(scanner.nextLine());
         System.out.println("thêm họ tên nhân viên : ");
         String fullName = scanner.nextLine();
         System.out.println("thêm ngày sinh nhân viên : ");
@@ -50,6 +51,7 @@ public class EmployeeManagementImpl implements IEmployeeManagement {
         String salary = scanner.nextLine();
         Employee employee = new Employee(fullName, dateOfBirth, gender, citizenId, numberPhone, gmail, employeeCode, level, position, salary);
         personArrayList.add(employee);
+      ReaderWriter.writeEmployee(personArrayList);
     }
 
     @Override
@@ -59,7 +61,6 @@ public class EmployeeManagementImpl implements IEmployeeManagement {
         boolean flag = true;
         for (int i = 0; i < personArrayList.size(); i++) {
             if (personArrayList.get(i).getEmployeeCode().equals(employeeCode1)) {
-
                 System.out.println("thêm họ tên nhân viên : ");
                 String fullName = scanner.nextLine();
                 System.out.println("thêm ngày sinh nhân viên : ");
@@ -82,6 +83,7 @@ public class EmployeeManagementImpl implements IEmployeeManagement {
                 String salary = scanner.nextLine();
                 Employee employee = new Employee(fullName, dateOfBirth, gender, citizenId, numberPhone, gmail, employeeCode, level, position, salary);
                 personArrayList.set(i, employee);
+                ReaderWriter.writeEmployee(personArrayList);
                 flag = false;
             }
         }

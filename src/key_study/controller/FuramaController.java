@@ -1,5 +1,6 @@
 package key_study.controller;
 
+import key_study.severis.bookingService.BookingServiceImpl;
 import key_study.severis.implement_method.facilityServiceImpl.FacilityServiceImpl;
 import key_study.severis.implement_method.personImpl.CustomerManagementImpl;
 import key_study.severis.implement_method.personImpl.EmployeeManagementImpl;
@@ -14,7 +15,7 @@ public class FuramaController {
             System.out.println("1.\tEmployee Management\n" +
                     "2.\tCustomer Management\n" +
                     "3.\tFacility Management \n" +
-                    "4.\tBooking Management\n" +
+                    "4.\tBookingServiceImpl Management\n" +
                     "5.\tPromotion Management\n" +
                     "6.\tExit");
             Integer choice = Integer.valueOf(scanner.nextLine());
@@ -114,6 +115,7 @@ public class FuramaController {
                     menu();
                     break;
                 case 3:
+                    facilityService.displayMaintenance();
                     break;
                 case 4:
                     return;
@@ -152,6 +154,7 @@ public class FuramaController {
     }
 
     public void bookingManagerment() {
+        BookingServiceImpl bookingService=new BookingServiceImpl();
         do {
             System.out.print("1.\tAdd new booking\n" +
                     "2.\tDisplay list booking\n" +
@@ -164,8 +167,10 @@ public class FuramaController {
 
             switch (choice) {
                 case 1:
+                    bookingService.addNewBooking();
                     break;
                 case 2:
+                    bookingService.displayListBooking();
                     break;
                 case 3:
                     break;
