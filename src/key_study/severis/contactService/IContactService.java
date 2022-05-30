@@ -1,5 +1,8 @@
 package key_study.severis.contactService;
 
-public interface IContactService  {
+import key_study.severis.ServiceImpl;
 
+public interface IContactService extends ServiceImpl {
+
+void createNewContract();
 }

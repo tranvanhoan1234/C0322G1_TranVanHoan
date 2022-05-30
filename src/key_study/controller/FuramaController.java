@@ -1,9 +1,10 @@
 package key_study.controller;
 
 import key_study.severis.bookingService.BookingServiceImpl;
+import key_study.severis.contactService.ContractServiceImpl;
 import key_study.severis.implement_method.facilityServiceImpl.FacilityServiceImpl;
-import key_study.severis.implement_method.personImpl.CustomerManagementImpl;
-import key_study.severis.implement_method.personImpl.EmployeeManagementImpl;
+import key_study.severis.implement_method.personImpl.CustomerServiceImpl;
+import key_study.severis.implement_method.personImpl.EmployeeServiceImpl;
 
 import java.util.Scanner;
 
@@ -30,10 +31,10 @@ public class FuramaController {
                     facilityManagement();
                     break;
                 case 4:
-                    bookingManagerment();
+                    bookingManagement();
                     break;
                 case 5:
-                    promotionManagemen();
+                    promotionManagement();
                     break;
                 case 6:
                     System.exit(6);
@@ -45,7 +46,7 @@ public class FuramaController {
     }
 
     public void employeeManagement() {
-        EmployeeManagementImpl employeeManagement = new EmployeeManagementImpl();
+        EmployeeServiceImpl employeeManagement = new EmployeeServiceImpl();
         do {
             System.out.println("1\tDisplay list employees\n" +
                     "2\tAdd new employee\n" +
@@ -54,10 +55,10 @@ public class FuramaController {
             Integer choice = Integer.valueOf(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    employeeManagement.displayEmployee();
+                    employeeManagement.display();
                     break;
                 case 2:
-                    employeeManagement.addEmployee();
+                    employeeManagement.add();
                     break;
                 case 3:
                     employeeManagement.editEmployee();
@@ -73,7 +74,7 @@ public class FuramaController {
     }
 
     public void customerManagement() {
-        CustomerManagementImpl customerManagement = new CustomerManagementImpl();
+        CustomerServiceImpl customerManagement = new CustomerServiceImpl();
         do {
             System.out.print("1.\tDisplay list customers\n" +
                     "2.\tAdd new customer\n" +
@@ -83,10 +84,10 @@ public class FuramaController {
             Integer choice = Integer.valueOf(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    customerManagement.displayCustomer();
+                    customerManagement.display();
                     break;
                 case 2:
-                    customerManagement.addCustomer();
+                    customerManagement.add();
                     break;
                 case 3:
                     customerManagement.editCustomer();
@@ -153,8 +154,9 @@ public class FuramaController {
 
     }
 
-    public void bookingManagerment() {
-        BookingServiceImpl bookingService=new BookingServiceImpl();
+    public void bookingManagement() {
+        BookingServiceImpl bookingServiceImpl = new BookingServiceImpl();
+        ContractServiceImpl contractService = new ContractServiceImpl();
         do {
             System.out.print("1.\tAdd new booking\n" +
                     "2.\tDisplay list booking\n" +
@@ -167,16 +169,16 @@ public class FuramaController {
 
             switch (choice) {
                 case 1:
-                    bookingService.addNewBooking();
-                    displayMainMenu();
+                    bookingServiceImpl.add();
                     break;
                 case 2:
-                    bookingService.displayListBooking();
-                    displayMainMenu();
+                    bookingServiceImpl.display();
                     break;
                 case 3:
+                    contractService.createNewContract();
                     break;
                 case 4:
+                    contractService.display();
                     break;
                 case 5:
                     break;
@@ -188,7 +190,7 @@ public class FuramaController {
         } while (true);
     }
 
-    public void promotionManagemen() {
+    public void promotionManagement() {
 
         do {
             System.out.println("1.\tDisplay list customers use service\n" +

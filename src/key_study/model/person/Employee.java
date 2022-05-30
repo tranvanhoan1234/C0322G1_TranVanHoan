@@ -12,7 +12,7 @@ public class Employee extends Person {
     @Override
     public String writerPerson() {
         return this.getFullName() + "," + this.getDateOfBirth() + "," + this.getGender()
-                + "," + getCitizenId() + "," + this.getNumberPhone() + "," + "," + this.getGmail() + "," + this.getEmployeeCode() + "," + this.getLevel() + "," +
+                + "," + getCitizenId() + "," + this.getNumberPhone() + "," + this.getGmail() + "," + this.getEmployeeCode() + "," + this.getLevel() + "," +
                 this.getPosition() + "," + this.getSalary();
     }
 

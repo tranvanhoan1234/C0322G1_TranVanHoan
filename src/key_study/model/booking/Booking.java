@@ -3,34 +3,31 @@ package key_study.model.booking;
 import key_study.model.facility.Facility;
 import key_study.model.person.Customer;
 
-import java.util.Objects;
+import java.time.LocalDate;
+
+import static com.sun.imageio.plugins.jpeg.JPEG.COM;
 
 public class Booking {
     private int bookingId;
     private String dateStart;
     private String dateEnd;
-    private int customerID;
-    private String serviceName;
+    Customer customerID;
+    Facility facility;
     private String typeOfService;//loại hình dịch vụ
 
 
-    public Booking() {
+    public Booking(String line, LocalDate dateStart, LocalDate dateEnd, String s, String line1, String typeOfService) {
 
     }
 
-    public Booking(int bookingId, String dateStart, String dateEnd, int customerID, String serviceName, String typeOfService) {
+    public Booking(int bookingId, String dateStart, String dateEnd, Customer customerID, Facility facility, String typeOfService) {
         this.bookingId = bookingId;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.customerID = customerID;
-        this.serviceName = serviceName;
+        this.facility = facility;
         this.typeOfService = typeOfService;
     }
-
-    public Booking(int id, String starDate, String endDate, Customer customer, Facility facility) {
-
-    }
-
 
     public int getBookingId() {
         return bookingId;
@@ -56,20 +53,20 @@ public class Booking {
         this.dateEnd = dateEnd;
     }
 
-    public int getCustomerID() {
+    public Customer getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(Customer customerID) {
         this.customerID = customerID;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 
     public String getTypeOfService() {
@@ -80,6 +77,10 @@ public class Booking {
         this.typeOfService = typeOfService;
     }
 
+    public String convertLine() {
+        String line = getBookingId() + COM + dateStart.format(this.dateStart) + COM + dateEnd.format(this.dateEnd) + COM +getFacility() + COM + getCustomerID();
+        return line;
+    }
 
     @Override
     public String toString() {
@@ -88,7 +89,7 @@ public class Booking {
                 ", dateStart='" + dateStart + '\'' +
                 ", dateEnd='" + dateEnd + '\'' +
                 ", customerID=" + customerID +
-                ", serviceName='" + serviceName + '\'' +
+                ", facility=" + facility +
                 ", typeOfService='" + typeOfService + '\'' +
                 '}';
     }

@@ -1,5 +1,6 @@
 package key_study.uitl.reader_writer;
 
+import key_study.model.booking.Booking;
 import key_study.model.facility.House;
 import key_study.model.facility.Room;
 import key_study.model.facility.Villa;
@@ -7,8 +8,10 @@ import key_study.model.person.Customer;
 import key_study.model.person.Employee;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.zip.DataFormatException;
 
 public class ReaderWriter {
     private final static String PATH_CUSTOMER = "src/key_study/uitl/data/customer.csv";
@@ -16,6 +19,7 @@ public class ReaderWriter {
     private final static String PATH_VILLA = "src/key_study/uitl/data/villa.csv";
     private final static String PATH_HOUSE = "src/key_study/uitl/data/house.csv";
     private final static String PATH_ROOM = "src/key_study/uitl/data/room.csv";
+    private final static String PATH_BOOKING = "src/key_study/uitl/data/booking.csv";
 
 //    private final static String COMMA = ",";
 
@@ -104,7 +108,33 @@ public class ReaderWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }   private static void writeToFile(String pathFile, List<String> list) {
+        try {
+            FileWriter fileWriter = new FileWriter(pathFile);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            String line = null;
+            for (String s : list) {
+                bufferedWriter.write(s);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
+
+    public static void writeBooking(String pathFile, Set<Booking> bookings) {
+        List<String> list = new ArrayList<>();
+
+        for (Booking b : bookings) {
+            list.add(b.convertLine());
+        }
+
+        writeToFile(pathFile, list);
+    }
+
 
     public static List<String> readFileCsvToListStrinng(String pathFile) {
         List<String> stringList = new ArrayList<>();
@@ -115,7 +145,7 @@ public class ReaderWriter {
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
             String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null && !line.equals("")) {
                 stringList.add(line);
             }
             bufferedReader.close();
@@ -139,7 +169,6 @@ public class ReaderWriter {
         }
         return customerList;
     }
-
     public static List<Employee> readFileEmployee() {
         List<String> stringList = readFileCsvToListStrinng(PATH_EMPLOYEE);
         List<Employee> employees = new ArrayList<>();
@@ -187,5 +216,30 @@ public class ReaderWriter {
             rooms.add(room);
         }
         return rooms;
+    }    public static Set<Booking> readListBooking(String pathFile) {
+        Set<Booking> bookingSet = new TreeSet<>();
+        String[] lines = null;
+        try {
+            FileReader fileReader = new FileReader(pathFile);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while (true) {
+                String line = bufferedReader.readLine();
+                if (line == null) {
+                    break;
+                }
+                lines = line.split(",");
+
+                LocalDate dateStart = null;
+                LocalDate dateEnd = null;
+                dateStart = LocalDate.parse(lines[1]);
+                dateEnd = LocalDate.parse(lines[2]);
+                bookingSet.add(new Booking(lines[0], dateStart, dateEnd, lines[3], lines[4], lines[5]));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bookingSet;
     }
 }

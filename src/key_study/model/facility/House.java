@@ -1,7 +1,9 @@
 package key_study.model.facility;
 
+import static com.sun.imageio.plugins.jpeg.JPEG.COM;
+
 public class House extends Facility {
-    private final static String COM = ",";
+
     private String roomStandard;
     private String numberOfFloors;
 
@@ -15,6 +17,7 @@ public class House extends Facility {
                 this.getUsableArea()+COM+this.getRentalCosts()+COM+this.getMaximumNumberOfPeople()
                 +COM+this.getRentalType()+COM+this.getRoomStandard()+COM+getNumberOfFloors();
     }
+
 
     public House(String serviceCode, String serviceName, Double usableArea, Integer rentalCosts, Integer maximumNumberOfPeople,
                  Integer rentalType, String roomStandard, String numberOfFloors) {

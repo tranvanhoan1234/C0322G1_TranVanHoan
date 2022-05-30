@@ -1,5 +1,6 @@
 package key_study.severis.implement_method.facilityServiceImpl;
 
+import key_study.model.booking.Booking;
 import key_study.model.facility.Facility;
 import key_study.model.facility.House;
 import key_study.model.facility.Room;
@@ -8,7 +9,7 @@ import key_study.uitl.reader_writer.ReaderWriter;
 
 import java.util.*;
 
-public class FacilityServiceImpl implements IFacilityManagement {
+public class FacilityServiceImpl implements FacilityService {
     private static Scanner scanner = new Scanner(System.in);
     private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap();
     private static List<Facility> facilityList = new ArrayList<>();
@@ -21,10 +22,12 @@ public class FacilityServiceImpl implements IFacilityManagement {
         House houseList1 = new House("hose", "hose", 100.4, 19, 123, 123, "vip", "324");
         Room room = new Room("room", "room", 1212.2, 22, 122, 12, "có chục em chân dài phục vụ");
         facilityIntegerMap.put(houseList1, 1);
-        facilityIntegerMap.put(villa1, 1);
+        facilityIntegerMap.put(villa1,3);
         facilityIntegerMap.put(room, 1);
     }
-
+    public Set<Facility> senFacility() {
+        return (Set<Facility>) facilityIntegerMap;
+    }
     @Override
     public void displayFacility() {
         houseList = ReaderWriter.readFilHouse();
@@ -40,7 +43,7 @@ public class FacilityServiceImpl implements IFacilityManagement {
             addMaintenance(room);
         }
         for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
-            System.out.println("tên dịch vụ: " + entry.getKey().getServiceCode());
+            System.out.println("tên dịch vụ: " + entry.getKey());
             System.out.println("số lần: " + entry.getValue());
         }
     }
