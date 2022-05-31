@@ -1,6 +1,6 @@
 package key_study.model.facility;
 
-import static com.sun.imageio.plugins.jpeg.JPEG.COM;
+import key_study.common.Com;
 
 public class House extends Facility {
 
@@ -13,9 +13,9 @@ public class House extends Facility {
 
     @Override
     public String readEndWriterFacility() {
-        return this.getServiceCode()+COM+this.getServiceName()+COM+
-                this.getUsableArea()+COM+this.getRentalCosts()+COM+this.getMaximumNumberOfPeople()
-                +COM+this.getRentalType()+COM+this.getRoomStandard()+COM+getNumberOfFloors();
+        return this.getServiceCode()+ Com.COM+this.getServiceName()+Com.COM+
+                this.getUsableArea()+Com.COM+this.getRentalCosts()+Com.COM+this.getMaximumNumberOfPeople()
+                +Com.COM+this.getRentalType()+Com.COM+this.getRoomStandard()+Com.COM+getNumberOfFloors();
     }
 
 

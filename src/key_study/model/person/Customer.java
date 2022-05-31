@@ -1,5 +1,7 @@
 package key_study.model.person;
 
+import java.util.Objects;
+
 public class Customer extends Person {
     private Integer customerCode;
     private String typeOfGuest;
@@ -10,10 +12,10 @@ public class Customer extends Person {
 
     @Override
     public String writerPerson() {
-        return getFullName()+","+getDateOfBirth()+","+getGender()+","+getCitizenId()+","+getNumberPhone()+","+getGmail()+","+getCustomerCode()+","+getTypeOfGuest()+","+getAddress();
+        return getCustomerCode() + "," + getDateOfBirth() + "," + getGender() + "," + getCitizenId() + "," + getNumberPhone() + "," + getGmail() + "," + getFullName() + "," + getTypeOfGuest() + "," + getAddress();
     }
 
-    public Customer(Integer customerCode, String dateOfBirth, int i, String gender, Integer citizenId, Long numberPhone, String gmail, String fullName, String typeOfGuest, String address) {
+    public Customer(Integer customerCode, String dateOfBirth, String gender, Integer citizenId, Long numberPhone, String gmail, String fullName, String typeOfGuest, String address) {
         super(fullName, dateOfBirth, gender, citizenId, numberPhone, gmail);
         this.customerCode = customerCode;
         this.typeOfGuest = typeOfGuest;
@@ -46,11 +48,23 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer : " +
+        return "Customer :" +
                 "customerCode : " + customerCode +
                 super.toString() +
                 ", typeOfGuest : '" + typeOfGuest + '\'' +
-                ", address : '" + address + '\'' +
-                '.';
+                ", address : '" + address + '\'';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return customerCode.equals(customer.customerCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customerCode);
     }
 }

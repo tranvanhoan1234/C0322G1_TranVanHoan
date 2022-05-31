@@ -1,6 +1,6 @@
 package key_study.severis.bookingService;
 
-import key_study.severis.ServiceImpl;
+import key_study.severis.Service;
 
-public interface BookingService extends ServiceImpl {
+public interface BookingService extends Service {
 }

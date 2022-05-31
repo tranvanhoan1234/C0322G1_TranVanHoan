@@ -5,6 +5,7 @@ import key_study.severis.contactService.ContractServiceImpl;
 import key_study.severis.implement_method.facilityServiceImpl.FacilityServiceImpl;
 import key_study.severis.implement_method.personImpl.CustomerServiceImpl;
 import key_study.severis.implement_method.personImpl.EmployeeServiceImpl;
+import key_study.uitl.check_exception.CheckException;
 
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class FuramaController {
                     "4.\tBookingServiceImpl Management\n" +
                     "5.\tPromotion Management\n" +
                     "6.\tExit");
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
             switch (choice) {
                 case 1:
                     employeeManagement();
@@ -52,7 +53,7 @@ public class FuramaController {
                     "2\tAdd new employee\n" +
                     "3\tEdit employee\n" +
                     "4\tReturn main menu");
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
             switch (choice) {
                 case 1:
                     employeeManagement.display();
@@ -81,7 +82,7 @@ public class FuramaController {
                     "3.\tEdit customer\n" +
                     "4.\tReturn main menu \n" +
                     " \tchon : ");
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
             switch (choice) {
                 case 1:
                     customerManagement.display();
@@ -107,7 +108,7 @@ public class FuramaController {
                     "2\tAdd new facility\n" +
                     "3\tDisplay list facility maintenance\n" +
                     "4\tReturn main menu");
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
             switch (choice) {
                 case 1:
                     facilityService.displayFacility();
@@ -134,7 +135,7 @@ public class FuramaController {
                     "2.\tAdd New House\n" +
                     "3.\tAdd New Room\n" +
                     "4.\tBack to menu");
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
             switch (choice) {
                 case 1:
                     facilityService.addVilla();
@@ -165,7 +166,7 @@ public class FuramaController {
                     "5.\tEdit contracts\n" +
                     "6.\tReturn main menu\n" +
                     "\tChon : ");
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
 
             switch (choice) {
                 case 1:
@@ -196,7 +197,7 @@ public class FuramaController {
             System.out.println("1.\tDisplay list customers use service\n" +
                     "2.\tDisplay list customers get voucher\n" +
                     "3.\tReturn main menu\n");
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
 
             switch (choice) {
                 case 1:

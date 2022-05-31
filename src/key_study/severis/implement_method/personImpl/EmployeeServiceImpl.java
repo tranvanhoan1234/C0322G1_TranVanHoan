@@ -2,12 +2,13 @@ package key_study.severis.implement_method.personImpl;
 
 import key_study.model.person.Employee;
 import key_study.model.person.Person;
+import key_study.uitl.check_exception.CheckException;
 import key_study.uitl.reader_writer.ReaderWriter;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeService implements EmployeeService {
     //    private static List<Employee> personArrayList = new LinkedList<>();
     private Scanner scanner = new Scanner(System.in);
 //
@@ -24,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void editEmployee() {
         List<Employee> personArrayList = ReaderWriter.readFileEmployee();
         System.out.println("mời nhập id bạn muốn edit: ");
-        Integer employeeCode1 = Integer.valueOf(scanner.nextLine());
+        Integer employeeCode1 = CheckException.checkExForParseInteger();
         boolean flag = true;
         for (int i = 0; i < personArrayList.size(); i++) {
             if (personArrayList.get(i).getEmployeeCode().equals(employeeCode1)) {
@@ -35,11 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("sửa giới tính nhân viên : ");
                 String gender = scanner.nextLine();
                 System.out.println("sửa số cmnd nhân viên : ");
-                Integer citizenId = Integer.valueOf(scanner.nextLine());
+                Integer citizenId = CheckException.checkExForParseInteger();
                 System.out.println("sửa số điện thoại nhân viên : ");
-                Long numberPhone = Long.valueOf(scanner.nextLine());
+                Long numberPhone = CheckException.checkExForParseLong();
                 System.out.println("sửa trình mã nhân viên :  ");
-                Integer employeeCode = Integer.valueOf(scanner.nextLine());
+                Integer employeeCode = CheckException.checkExForParseInteger();
                 System.out.println("sửa gmail nhân viên : ");
                 String gmail = scanner.nextLine();
                 String position = null;
@@ -134,11 +135,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("thêm giới tính nhân viên : ");
         String gender = scanner.nextLine();
         System.out.println("thêm số cmnd nhân viên : ");
-        Integer citizenId = Integer.valueOf(scanner.nextLine());
+        Integer citizenId = CheckException.checkExForParseInteger();
         System.out.println("thêm số điện thoại nhân viên : ");
-        Long numberPhone = Long.valueOf(scanner.nextLine());
+        Long numberPhone = CheckException.checkExForParseLong();
         System.out.println("thêm mã nhân viên :  ");
-        Integer employeeCode = Integer.valueOf(scanner.nextLine());
+        Integer employeeCode =CheckException.checkExForParseInteger();
         System.out.println("thêm gmail nhân viên : ");
         String gmail = scanner.nextLine();
         String position = null;

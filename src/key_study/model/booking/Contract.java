@@ -1,15 +1,15 @@
 package key_study.model.booking;
-
+//Booking=bookingId : 2, dateStart :'null', dateEnd : null', customerID : null, facility : null, typeOfService='null',1,12/04/2022,2
 public class Contract {
     private String someContracts;
-    Booking bookingCode;
+    private Integer bookingCode;
     private String advanceDepositAmount;//số tiền cọc
     private String totalPaymentAmount;// số chi phí
 
     public Contract() {
     }
 
-    public Contract(String someContracts, Booking bookingCode, String advanceDepositAmount, String totalPaymentAmount) {
+    public Contract(String someContracts, Integer bookingCode, String advanceDepositAmount, String totalPaymentAmount) {
         this.someContracts = someContracts;
         this.bookingCode = bookingCode;
         this.advanceDepositAmount = advanceDepositAmount;
@@ -24,11 +24,11 @@ public class Contract {
         this.someContracts = someContracts;
     }
 
-    public Booking getBookingCode() {
+    public Integer getBookingCode() {
         return bookingCode;
     }
 
-    public void setBookingCode(Booking bookingCode) {
+    public void setBookingCode(Integer bookingCode) {
         this.bookingCode = bookingCode;
     }
 
@@ -47,14 +47,15 @@ public class Contract {
     public void setTotalPaymentAmount(String totalPaymentAmount) {
         this.totalPaymentAmount = totalPaymentAmount;
     }
-
+    public String toStringContract() {
+        return getBookingCode()+","+getSomeContracts()+","+getAdvanceDepositAmount()+","+getTotalPaymentAmount();
+    }
     @Override
     public String toString() {
-        return "Contract{" +
-                "someContracts='" + someContracts + '\'' +
-                ", bookingCode='" + bookingCode + '\'' +
-                ", advanceDepositAmount='" + advanceDepositAmount + '\'' +
-                ", totalPaymentAmount='" + totalPaymentAmount + '\'' +
-                '}';
+        return "Contract" +
+                "someContracts=" + someContracts + '\'' +
+                ", bookingCode=" + bookingCode + '\'' +
+                ", advanceDepositAmount: " + advanceDepositAmount + '\'' +
+                ", totalPaymentAmount: " + totalPaymentAmount + '\'';
     }
 }

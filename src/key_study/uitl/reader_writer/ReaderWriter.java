@@ -1,17 +1,17 @@
 package key_study.uitl.reader_writer;
 
 import key_study.model.booking.Booking;
+import key_study.model.booking.Contract;
 import key_study.model.facility.House;
 import key_study.model.facility.Room;
 import key_study.model.facility.Villa;
 import key_study.model.person.Customer;
 import key_study.model.person.Employee;
+import key_study.severis.bookingService.BookingComparator;
 
 import java.io.*;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.zip.DataFormatException;
 
 public class ReaderWriter {
     private final static String PATH_CUSTOMER = "src/key_study/uitl/data/customer.csv";
@@ -20,6 +20,7 @@ public class ReaderWriter {
     private final static String PATH_HOUSE = "src/key_study/uitl/data/house.csv";
     private final static String PATH_ROOM = "src/key_study/uitl/data/room.csv";
     private final static String PATH_BOOKING = "src/key_study/uitl/data/booking.csv";
+    private final static String PATH_CONTRACT = "src/key_study/uitl/data/contract.csv";
 
 //    private final static String COMMA = ",";
 
@@ -50,7 +51,7 @@ public class ReaderWriter {
             fileWriter = new FileWriter(file, false);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Employee employee : list) {
-              bufferedWriter.write(employee.writerPerson());
+                bufferedWriter.write(employee.writerPerson());
                 bufferedWriter.newLine();
 
             }
@@ -59,6 +60,7 @@ public class ReaderWriter {
             e.printStackTrace();
         }
     }
+
     public static void writeVilla(List<Villa> list) {
         File file = new File(PATH_VILLA);
         FileWriter fileWriter = null;
@@ -75,7 +77,9 @@ public class ReaderWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    } public static void writeHouse(List<House> list) {
+    }
+
+    public static void writeHouse(List<House> list) {
         File file = new File(PATH_HOUSE);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
@@ -92,6 +96,7 @@ public class ReaderWriter {
             e.printStackTrace();
         }
     }
+
     public static void writeRoom(List<Room> list) {
         File file = new File(PATH_ROOM);
         FileWriter fileWriter = null;
@@ -108,32 +113,53 @@ public class ReaderWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }   private static void writeToFile(String pathFile, List<String> list) {
-        try {
-            FileWriter fileWriter = new FileWriter(pathFile);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+    }
 
-            String line = null;
-            for (String s : list) {
-                bufferedWriter.write(s);
+    public static void writeBooking(Set<Booking> list) {
+        File file = new File(PATH_BOOKING);
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            fileWriter = new FileWriter(file);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            for (Booking booking : list) {
+                bufferedWriter.write(booking.bookingToString());
                 bufferedWriter.newLine();
+
             }
             bufferedWriter.close();
-            fileWriter.close();
         } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    public static void writeBooking(String pathFile, Set<Booking> bookings) {
-        List<String> list = new ArrayList<>();
+    public static void writeContract(Set<Contract> list) {
+        File file = new File(PATH_CONTRACT);
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            fileWriter = new FileWriter(file, true);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            for (Contract contract : list) {
+                bufferedWriter.write(contract.toStringContract());
+                bufferedWriter.newLine();
 
-        for (Booking b : bookings) {
-            list.add(b.convertLine());
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        writeToFile(pathFile, list);
     }
+
+//    public static void writeBooking(String pathFile) {
+//        List<String> list = new ArrayList<>();
+//
+//        for (Booking b : bookings) {
+//            list.add(b.convertLine());
+//        }
+//
+//        writeToFile(pathFile, list);
+//    }
 
 
     public static List<String> readFileCsvToListStrinng(String pathFile) {
@@ -164,11 +190,12 @@ public class ReaderWriter {
         Customer customer = null;
         for (String str : stringList) {
             array = str.split(",");
-            customer = new Customer(Integer.parseInt(array[0]), array[1], 2, array[2], Integer.parseInt(array[3]), Long.parseLong(array[4]), array[5], array[6], array[7], array[8]);
+            customer = new Customer(Integer.parseInt(array[0]), array[1], array[2], Integer.parseInt(array[3]), Long.parseLong(array[4]), array[5], array[6], array[7], array[8]);
             customerList.add(customer);
         }
         return customerList;
     }
+
     public static List<Employee> readFileEmployee() {
         List<String> stringList = readFileCsvToListStrinng(PATH_EMPLOYEE);
         List<Employee> employees = new ArrayList<>();
@@ -181,6 +208,7 @@ public class ReaderWriter {
         }
         return employees;
     }
+
     public static List<Villa> readFileVilla() {
         List<String> stringList = readFileCsvToListStrinng(PATH_VILLA);
         List<Villa> villas = new ArrayList<>();
@@ -188,11 +216,12 @@ public class ReaderWriter {
         Villa villas1 = null;
         for (String str : stringList) {
             array = str.split(",");
-            villas1 = new Villa(array[0],array[1],Double.parseDouble(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),Integer.parseInt(array[5]),array[6],Double.parseDouble(array[7]));
+            villas1 = new Villa(array[0], array[1], Double.parseDouble(array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]), Integer.parseInt(array[5]), array[6], Double.parseDouble(array[7]));
             villas.add(villas1);
         }
         return villas;
     }
+
     public static List<House> readFilHouse() {
         List<String> stringList = readFileCsvToListStrinng(PATH_HOUSE);
         List<House> houses = new ArrayList<>();
@@ -200,11 +229,12 @@ public class ReaderWriter {
         House house = null;
         for (String str : stringList) {
             array = str.split(",");
-            house = new House(array[0],array[1],Double.parseDouble(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),Integer.parseInt(array[5]),array[6],array[7]);
+            house = new House(array[0], array[1], Double.parseDouble(array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]), Integer.parseInt(array[5]), array[6], array[7]);
             houses.add(house);
         }
         return houses;
     }
+
     public static List<Room> readFilRoom() {
         List<String> stringList = readFileCsvToListStrinng(PATH_ROOM);
         List<Room> rooms = new ArrayList<>();
@@ -212,12 +242,15 @@ public class ReaderWriter {
         Room room = null;
         for (String str : stringList) {
             array = str.split(",");
-            room = new Room(array[0],array[1],Double.parseDouble(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),Integer.parseInt(array[5]),array[6] );
+            room = new Room(array[0], array[1], Double.parseDouble(array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]), Integer.parseInt(array[5]), array[6]);
             rooms.add(room);
         }
         return rooms;
-    }    public static Set<Booking> readListBooking(String pathFile) {
-        Set<Booking> bookingSet = new TreeSet<>();
+    }
+
+    public static Set<Booking> readListBooking(String pathFile) {
+        Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
+        String temp = null;
         String[] lines = null;
         try {
             FileReader fileReader = new FileReader(pathFile);
@@ -228,12 +261,12 @@ public class ReaderWriter {
                     break;
                 }
                 lines = line.split(",");
-
-                LocalDate dateStart = null;
-                LocalDate dateEnd = null;
-                dateStart = LocalDate.parse(lines[1]);
-                dateEnd = LocalDate.parse(lines[2]);
-                bookingSet.add(new Booking(lines[0], dateStart, dateEnd, lines[3], lines[4], lines[5]));
+                bookingSet.add(new Booking(Integer.parseInt(lines[0]),
+                        lines[1],
+                        lines[2],
+                        Integer.parseInt(lines[3]),
+                        lines[4],
+                        lines[5]));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -241,5 +274,29 @@ public class ReaderWriter {
             e.printStackTrace();
         }
         return bookingSet;
+    } public static Set<Contract> readListContract(String pathFile) {
+        Set<Contract> contracts = new LinkedHashSet<>();
+        String temp = null;
+        String[] lines = null;
+        try {
+            FileReader fileReader = new FileReader(pathFile);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while (true) {
+                String line = bufferedReader.readLine();
+                if (line == null) {
+                    break;
+
+                }
+                lines = line.split(",");
+                contracts.add(new Contract(lines[0],Integer.parseInt(lines[1]),lines[2],lines[3]));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return contracts;
     }
+
+
 }

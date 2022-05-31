@@ -2,6 +2,7 @@ package key_study.severis.implement_method.personImpl;
 
 import key_study.model.person.Customer;
 import key_study.model.person.Employee;
+import key_study.uitl.check_exception.CheckException;
 import key_study.uitl.reader_writer.ReaderWriter;
 
 import java.util.LinkedList;
@@ -22,20 +23,21 @@ public class CustomerServiceImpl implements ICustomerService {
         boolean flag = true;
         for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getFullName().equals(customerCode1)) {
-                System.out.println("sửa ten khách hàng : ");
-                String fullName = scanner.nextLine();
+                System.out.println("sửa mã khách hàng : ");
+                Integer customerCode = CheckException.checkExForParseInteger();
                 System.out.println("sửa ngày sinh khách hàng: ");
                 String dateOfBirth = scanner.nextLine();
                 System.out.println("sửa giới tính khách hàng : ");
                 String gender = scanner.nextLine();
                 System.out.println("sửa số cccd khách hàng: ");
-                Integer citizenId = Integer.valueOf(scanner.nextLine());
+                Integer citizenId = CheckException.checkExForParseInteger();
                 System.out.println("sửa numberphone khách hàng : ");
-                Long numberPhone = Long.valueOf(scanner.nextLine());
+                Long numberPhone = CheckException.checkExForParseLong();
                 System.out.println("sửa gmail khách hàng : ");
                 String gmail = scanner.nextLine();
-                System.out.println("sửa mã khách hàng : ");
-                Integer customerCode = Integer.valueOf(scanner.nextLine());
+                System.out.println("sửa ten khách hàng : ");
+                String fullName = scanner.nextLine();
+
                 String typeOfGuest = null;
                 while (typeOfGuest == null) {
                     System.out.println("sửa loại khách :\n " +
@@ -45,7 +47,7 @@ public class CustomerServiceImpl implements ICustomerService {
                             "4.Silver,\n" +
                             "5.Member");
 
-                    Integer choice = Integer.valueOf(scanner.nextLine());
+                    Integer choice = CheckException.checkExForParseInteger();
                     switch (choice) {
                         case 1:
                             typeOfGuest = "Diamond";
@@ -68,7 +70,7 @@ public class CustomerServiceImpl implements ICustomerService {
                 }
                 System.out.println("sửa địa chỉ khách hàng : ");
                 String address = scanner.nextLine();
-                Customer customer = new Customer(customerCode, dateOfBirth, 2, gender, citizenId, numberPhone, gmail, fullName, typeOfGuest, address);
+                Customer customer = new Customer(customerCode, dateOfBirth, gender, citizenId, numberPhone, gmail, fullName, typeOfGuest, address);
                 customerList.set(i, customer);
                 ReaderWriter.writeCustumer(customerList);
                 flag = false;
@@ -83,27 +85,27 @@ public class CustomerServiceImpl implements ICustomerService {
     public void display() {
         List<Customer> customerList = ReaderWriter.readFileCustumer();
         for (Customer customer : customerList) {
-            System.out.println(customer);
+            System.out.println(customer.writerPerson());
         }
     }
 
     @Override
     public void add() {
         List<Customer> customerList = ReaderWriter.readFileCustumer();
-        System.out.println("thêm ten khách hàng : ");
-        String fullName = scanner.nextLine();
+        System.out.println("thêm mã khách hàng : ");
+        Integer customerCode = CheckException.checkExForParseInteger();
         System.out.println("thêm ngày sinh khách hàng: ");
         String dateOfBirth = scanner.nextLine();
         System.out.println("thêm giới tính khách hàng : ");
         String gender = scanner.nextLine();
         System.out.println("thêm số cccd khách hàng: ");
-        Integer citizenId = Integer.valueOf(scanner.nextLine());
+        Integer citizenId = CheckException.checkExForParseInteger();
         System.out.println("thêm numberphone khách hàng : ");
-        Long numberPhone = Long.valueOf(scanner.nextLine());
+        Long numberPhone = CheckException.checkExForParseLong();
         System.out.println("thêm gmail khách hàng : ");
         String gmail = scanner.nextLine();
-        System.out.println("thêm mã khách hàng : ");
-        Integer customerCode = Integer.valueOf(scanner.nextLine());
+        System.out.println("thêm ten khách hàng : ");
+        String fullName = scanner.nextLine();
         String typeOfGuest = null;
         while (typeOfGuest == null) {
             System.out.println("thêm loại khách : \n" +
@@ -113,7 +115,7 @@ public class CustomerServiceImpl implements ICustomerService {
                     "4.Silver,\n" +
                     "5.Member");
 
-            Integer choice = Integer.valueOf(scanner.nextLine());
+            Integer choice = CheckException.checkExForParseInteger();
             switch (choice) {
                 case 1:
                     typeOfGuest = "Diamond";
@@ -136,8 +138,9 @@ public class CustomerServiceImpl implements ICustomerService {
         }
         System.out.println("thêm địa chỉ khách hàng : ");
         String address = scanner.nextLine();
-        Customer customer = new Customer(customerCode, dateOfBirth, 2, gender, citizenId, numberPhone, gmail, fullName, typeOfGuest, address);
+        Customer customer = new Customer(customerCode, dateOfBirth, gender, citizenId, numberPhone, gmail, fullName, typeOfGuest, address);
         customerList.add(customer);
         ReaderWriter.writeCustumer(customerList);
+//        hoan,12/12/12,nam,1123132,123123,@ưqew,1,Diamond,dn
     }
 }
