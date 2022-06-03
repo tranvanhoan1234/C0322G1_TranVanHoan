@@ -5,6 +5,7 @@ import key_study.model.facility.Facility;
 import key_study.model.person.Customer;
 import key_study.uitl.check_exception.CheckException;
 import key_study.uitl.reader_writer.ReaderWriter;
+import key_study.uitl.regex.Regex;
 
 import java.util.*;
 
@@ -12,6 +13,7 @@ public class BookingServiceImpl implements BookingService {
     static Scanner scanner = new Scanner(System.in);
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
     static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+//    static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
 
     //    String fullName, String dateOfBirth, String gender, Integer citizenId, Long numberPhone
 //    , String gmail, Integer customerCode, String typeOfGuest, String address
@@ -40,7 +42,7 @@ public class BookingServiceImpl implements BookingService {
         return customerList.get(choice);
     }
     public static Facility choiceFacility() {
-        List<Facility> facilities1 = new ArrayList<>();
+        List<Facility> facilities1 = new LinkedList<>();
         facilities1.addAll(ReaderWriter.readFileVilla());
         facilities1.addAll(ReaderWriter.readFilRoom());
         facilities1.addAll(ReaderWriter.readFilHouse());
@@ -61,7 +63,7 @@ public class BookingServiceImpl implements BookingService {
     public void display() {
         Set<Booking> bookingSet = ReaderWriter.readListBooking("src/key_study/uitl/data/booking.csv");
         for (Booking booking : bookingSet) {
-            System.out.println(booking.bookingToString());
+            System.out.println(booking);
         }
     }
 
@@ -71,7 +73,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void add() {
-
+        ReaderWriter.readFileFacility(facilityIntegerMap);
+        bookingSet = ReaderWriter.readListBooking("src/key_study/uitl/data/booking.csv");
         int id = 1;
         if (!bookingSet.isEmpty()) {
             id = bookingSet.size();
@@ -81,17 +84,25 @@ public class BookingServiceImpl implements BookingService {
 
         System.out.println("nhập ngày bắt đầu thuê: ");
         String starDate = scanner.nextLine();
+        while (!Regex.yearRegex(String.valueOf(starDate))) {
+            System.err.print("nhập không đúng xin nhập lại : ");
+            starDate = scanner.nextLine();
+        }
 
         System.out.println("ngày trả phòng : ");
         String endDate = scanner.nextLine();
-
+        while (!Regex.yearRegex(String.valueOf(endDate))) {
+            System.err.print("nhập không đúng xin nhập lại : ");
+            endDate = scanner.nextLine();
+        }
         System.out.println("tên dịch vụ :");
         String serviceName = scanner.nextLine();
-
+        facilityIntegerMap.put(facility, facilityIntegerMap.get(facility) + 1);
         Booking booking = new Booking(id, starDate, endDate, customer.getCustomerCode(), facility.getServiceCode(), serviceName);
         bookingSet.add(booking);
         System.out.println("thêm vào thành công : ");
         ReaderWriter.writeBooking(bookingSet);
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
 
     }
 }

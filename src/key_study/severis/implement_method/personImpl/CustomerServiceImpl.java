@@ -4,6 +4,7 @@ import key_study.model.person.Customer;
 import key_study.model.person.Employee;
 import key_study.uitl.check_exception.CheckException;
 import key_study.uitl.reader_writer.ReaderWriter;
+import key_study.uitl.regex.Regex;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,30 +12,34 @@ import java.util.Scanner;
 
 public class CustomerServiceImpl implements ICustomerService {
     private static Scanner scanner = new Scanner(System.in);
-
-
     //    String fullName, String dateOfBirth, String gender, Integer citizenId, Long numberPhone
 //    , String gmail, Integer customerCode, String typeOfGuest, String address
 
     public void editCustomer() {
         List<Customer> customerList = ReaderWriter.readFileCustumer();
-        System.out.println("nhập tên muốn xóa : ");
+        System.out.println("nhập tên muốn edit : ");
         String customerCode1 = scanner.nextLine();
         boolean flag = true;
         for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getFullName().equals(customerCode1)) {
                 System.out.println("sửa mã khách hàng : ");
                 Integer customerCode = CheckException.checkExForParseInteger();
+
                 System.out.println("sửa ngày sinh khách hàng: ");
-                String dateOfBirth = scanner.nextLine();
+                String dateOfBirth =Regex.checkExForParseAge(scanner.nextLine());
+
                 System.out.println("sửa giới tính khách hàng : ");
                 String gender = scanner.nextLine();
+
                 System.out.println("sửa số cccd khách hàng: ");
                 Integer citizenId = CheckException.checkExForParseInteger();
+
                 System.out.println("sửa numberphone khách hàng : ");
                 Long numberPhone = CheckException.checkExForParseLong();
+
                 System.out.println("sửa gmail khách hàng : ");
                 String gmail = scanner.nextLine();
+
                 System.out.println("sửa ten khách hàng : ");
                 String fullName = scanner.nextLine();
 
@@ -95,7 +100,7 @@ public class CustomerServiceImpl implements ICustomerService {
         System.out.println("thêm mã khách hàng : ");
         Integer customerCode = CheckException.checkExForParseInteger();
         System.out.println("thêm ngày sinh khách hàng: ");
-        String dateOfBirth = scanner.nextLine();
+        String dateOfBirth =Regex.checkExForParseAge(scanner.nextLine());
         System.out.println("thêm giới tính khách hàng : ");
         String gender = scanner.nextLine();
         System.out.println("thêm số cccd khách hàng: ");

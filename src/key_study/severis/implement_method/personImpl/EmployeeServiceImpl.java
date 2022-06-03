@@ -4,11 +4,12 @@ import key_study.model.person.Employee;
 import key_study.model.person.Person;
 import key_study.uitl.check_exception.CheckException;
 import key_study.uitl.reader_writer.ReaderWriter;
+import key_study.uitl.regex.Regex;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class EmployeeService implements EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
     //    private static List<Employee> personArrayList = new LinkedList<>();
     private Scanner scanner = new Scanner(System.in);
 //
@@ -32,7 +33,7 @@ public class EmployeeService implements EmployeeService {
                 System.out.println("sửa họ tên nhân viên : ");
                 String fullName = scanner.nextLine();
                 System.out.println("sửa ngày sinh nhân viên : ");
-                String dateOfBirth = scanner.nextLine();
+                String dateOfBirth = Regex.checkExForParseAge(scanner.nextLine());
                 System.out.println("sửa giới tính nhân viên : ");
                 String gender = scanner.nextLine();
                 System.out.println("sửa số cmnd nhân viên : ");

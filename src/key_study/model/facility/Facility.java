@@ -1,8 +1,9 @@
 package key_study.model.facility;
 
+import java.util.Collections;
 import java.util.Objects;
 
-public abstract class Facility {
+public abstract class Facility implements Comparable<Facility> {
     private String serviceCode;
     private String serviceName;
     private double usableArea;
@@ -82,6 +83,11 @@ public abstract class Facility {
                 ", maximumNumberOfPeople : " + maximumNumberOfPeople +
                 ", rentalType : " + rentalType +
                 ':';
+    }
+
+    @Override
+    public int compareTo(Facility o) {
+        return this.serviceCode.compareTo(o.serviceCode);
     }
 
     @Override

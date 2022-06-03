@@ -1,25 +1,30 @@
 package key_study.uitl.check_exception;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class CheckException {
-    private final static String PATTERN = "dd-MM-yyyy";
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat(PATTERN);
+
+
     private static Scanner sc = new Scanner(System.in);
 
     public static Double checkExForParseDouble() {
         boolean check = true;
-        Double value1=0d;
+        Double value1 = 0d;
         while (check) {
             try {
                 value1 = Double.parseDouble(sc.nextLine());
                 check = false;
-            }catch (NumberFormatException a){
+            } catch (NumberFormatException a) {
                 System.err.println("Error: " + a.getMessage());
-            }catch (Exception e) {
+                a.getStackTrace();
+            } catch (Exception e) {
                 System.err.println("Error: " + e.getMessage());
                 System.out.println(">>> Enter again: ");
+                e.printStackTrace();
             }
         }
         return value1;
@@ -50,12 +55,15 @@ public class CheckException {
             try {
                 int value1 = Integer.parseInt(sc.nextLine());
                 return value1;
-            }catch (NumberFormatException a){
+            } catch (IllegalArgumentException a) {
                 System.err.println("Error: " + a.getMessage());
-            }catch (Exception e) {
+                a.printStackTrace();
+            } catch (Exception e) {
                 System.err.println("Error: " + e.getMessage());
-                System.out.println(">>> Enter again: ");
+                e.printStackTrace();
             }
         }
     }
+
+
 }

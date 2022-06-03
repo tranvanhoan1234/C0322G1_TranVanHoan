@@ -2,6 +2,7 @@ package key_study.uitl.reader_writer;
 
 import key_study.model.booking.Booking;
 import key_study.model.booking.Contract;
+import key_study.model.facility.Facility;
 import key_study.model.facility.House;
 import key_study.model.facility.Room;
 import key_study.model.facility.Villa;
@@ -10,7 +11,6 @@ import key_study.model.person.Employee;
 import key_study.severis.bookingService.BookingComparator;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.*;
 
 public class ReaderWriter {
@@ -30,7 +30,7 @@ public class ReaderWriter {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file, false);
+            fileWriter = new FileWriter(file, true);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Customer custumer : list) {
                 bufferedWriter.write(custumer.writerPerson());
@@ -48,7 +48,7 @@ public class ReaderWriter {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file, false);
+            fileWriter = new FileWriter(file, true);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Employee employee : list) {
                 bufferedWriter.write(employee.writerPerson());
@@ -66,7 +66,7 @@ public class ReaderWriter {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file, false);
+            fileWriter = new FileWriter(file, true);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Villa villa : list) {
                 bufferedWriter.write(villa.readEndWriterFacility());
@@ -84,7 +84,7 @@ public class ReaderWriter {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file, false);
+            fileWriter = new FileWriter(file, true);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (House house : list) {
                 bufferedWriter.write(house.readEndWriterFacility());
@@ -151,15 +151,21 @@ public class ReaderWriter {
         }
     }
 
-//    public static void writeBooking(String pathFile) {
-//        List<String> list = new ArrayList<>();
-//
-//        for (Booking b : bookings) {
-//            list.add(b.convertLine());
-//        }
-//
-//        writeToFile(pathFile, list);
-//    }
+    public static void writeFileFacility(Map<Facility, Integer> lists) {
+        List<String> listHouse = new ArrayList<>();
+        List<String> listVilla = new ArrayList<>();
+        List<String> listRoom = new ArrayList<>();
+        for (Map.Entry<Facility, Integer> entry : lists.entrySet()) {
+            if (entry.getKey() instanceof House) {
+                listHouse.add((entry.getKey()).readEndWriterFacility()+","+entry.getValue());
+            } else if (entry.getKey() instanceof Room) {
+                listRoom.add((entry.getKey()).readEndWriterFacility()+","+entry.getValue());
+            } else {
+                listVilla.add((entry.getKey()).readEndWriterFacility()+","+entry.getValue());
+            }
+        }
+
+    }
 
 
     public static List<String> readFileCsvToListStrinng(String pathFile) {
@@ -247,10 +253,9 @@ public class ReaderWriter {
         }
         return rooms;
     }
-
     public static Set<Booking> readListBooking(String pathFile) {
         Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
-        String temp = null;
+
         String[] lines = null;
         try {
             FileReader fileReader = new FileReader(pathFile);
@@ -261,12 +266,7 @@ public class ReaderWriter {
                     break;
                 }
                 lines = line.split(",");
-                bookingSet.add(new Booking(Integer.parseInt(lines[0]),
-                        lines[1],
-                        lines[2],
-                        Integer.parseInt(lines[3]),
-                        lines[4],
-                        lines[5]));
+                bookingSet.add(new Booking(Integer.parseInt(lines[0]), lines[1], lines[2], Integer.parseInt(lines[3]), lines[4], lines[5]));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -274,7 +274,9 @@ public class ReaderWriter {
             e.printStackTrace();
         }
         return bookingSet;
-    } public static Set<Contract> readListContract(String pathFile) {
+    }
+
+    public static Set<Contract> readListContract(String pathFile) {
         Set<Contract> contracts = new LinkedHashSet<>();
         String temp = null;
         String[] lines = null;
@@ -288,7 +290,7 @@ public class ReaderWriter {
 
                 }
                 lines = line.split(",");
-                contracts.add(new Contract(lines[0],Integer.parseInt(lines[1]),lines[2],lines[3]));
+                contracts.add(new Contract(lines[0], Integer.parseInt(lines[1]), lines[2], lines[3]));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -298,5 +300,42 @@ public class ReaderWriter {
         return contracts;
     }
 
-
+    public static void readFileFacility(Map<Facility, Integer> list) {
+        try {
+            FileReader fileReader = new FileReader("src/key_study/uitl/data/villa.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] temp = line.split(",");
+                Villa villa = new Villa(temp[0], temp[1], Double.parseDouble(temp[2]), Integer.parseInt(temp[3]), Integer.parseInt(temp[4]), Integer.parseInt(temp[5]), temp[6], Double.parseDouble(temp[7]));
+                list.put(villa, Integer.parseInt(temp[8]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            FileReader fileReader = new FileReader("src/key_study/uitl/data/room.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] temp = line.split(",");
+                Room room = new Room(temp[0], temp[1], Double.parseDouble(temp[2]), Integer.parseInt(temp[3]), Integer.parseInt(temp[4]), Integer.parseInt(temp[5]), temp[6]);
+                list.put(room, Integer.parseInt(temp[7]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            FileReader fileReader = new FileReader("src/key_study/uitl/data/house.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] temp = line.split(",");
+                House house = new House(temp[0], temp[1], Double.parseDouble(temp[2]), Integer.parseInt(temp[3]), Integer.parseInt(temp[4]), Integer.parseInt(temp[5]), temp[6], temp[7]);
+                list.put(house, Integer.parseInt(temp[8]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class ContractServiceImpl implements
     public void display() {
         contractList=ReaderWriter.readListContract("src/key_study/uitl/data/contract.csv");
         for (Contract contract : contractList) {
-            System.out.println(contract.toStringContract());
+            System.out.println(contract);
         }
     }
 
@@ -54,4 +54,8 @@ public class ContractServiceImpl implements
 
         }
     }
+//    public void edit(){
+//
+//
+//    }
 }
