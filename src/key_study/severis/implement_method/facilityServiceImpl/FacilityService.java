@@ -5,9 +5,9 @@ import key_study.model.facility.Facility;
 public interface FacilityService {
     void displayFacility();
 
-    void addMaintenance(Facility facility);
-
-    void checkMaintenance(Facility facility);
+//    void addMaintenance(Facility facility);
+//
+//    void checkMaintenance(Facility facility);
 
     void displayMaintenance();
 

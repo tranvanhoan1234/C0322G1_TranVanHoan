@@ -3,7 +3,6 @@ package key_study.severis.bookingService;
 import key_study.model.booking.Booking;
 import key_study.model.facility.Facility;
 import key_study.model.person.Customer;
-import key_study.uitl.check_exception.CheckException;
 import key_study.uitl.reader_writer.ReaderWriter;
 import key_study.uitl.regex.Regex;
 
@@ -13,7 +12,7 @@ public class BookingServiceImpl implements BookingService {
     static Scanner scanner = new Scanner(System.in);
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
     static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
-//    static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+    static List<Customer> listCustomer = new LinkedList<>();
 
     //    String fullName, String dateOfBirth, String gender, Integer citizenId, Long numberPhone
 //    , String gmail, Integer customerCode, String typeOfGuest, String address
@@ -27,36 +26,50 @@ public class BookingServiceImpl implements BookingService {
     // int bookingId, String dateStart, String dateEnd, int customerID, String serviceName, String typeOfService
 
     public static Customer choiceCustomer() {
-
-        List<Customer> customerList = ReaderWriter.readFileCustumer();
-        System.out.println("danh sách khách hàng : ");
-        for (int i = 0; i < customerList.size(); i++) {
-            System.out.println(i + ": " + customerList.get(i));
+        listCustomer = ReaderWriter.readFileCustumer();
+        System.out.println("-------------Danh sách khách hàng-------------");
+        for (Customer customer : listCustomer) {
+            System.out.println(customer);
         }
-        System.out.println("nhập lựa chọn  : ");
-        Integer choice = CheckException.checkExForParseInteger();
-        while (choice <= 0 && choice >= customerList.size() - 1) {
-            System.out.println("nhập lại choice : ");
-            choice = CheckException.checkExForParseInteger();
+        System.out.print("Nhập id khách hàng: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        boolean flag = true;
+        while (flag) {
+            for (Customer customer : listCustomer) {
+                if (id == customer.getCustomerCode()) {
+                    return customer;
+                }
+            }
+            if (flag) {
+                System.out.println("Nhập sai, vui lòng nhập lại");
+                id = Integer.parseInt(scanner.nextLine());
+            }
         }
-        return customerList.get(choice);
+        return null;
     }
     public static Facility choiceFacility() {
-        List<Facility> facilities1 = new LinkedList<>();
-        facilities1.addAll(ReaderWriter.readFileVilla());
-        facilities1.addAll(ReaderWriter.readFilRoom());
-        facilities1.addAll(ReaderWriter.readFilHouse());
-        System.out.println("danh sách khách hàng : ");
-        for (int i = 0; i < facilities1.size(); i++) {
-            System.out.println(i + ": " + facilities1.get(i));
+        facilityIntegerMap.clear();
+        ReaderWriter.readFileFacility(facilityIntegerMap);
+        System.out.println("-------------Danh sách dịch vụ-------------");
+        for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+            System.out.println(entry.getKey());
         }
-        System.out.println("nhập lựa chọn  : ");
-        Integer choice = CheckException.checkExForParseInteger();
-        while (choice >= 0 && choice >= facilities1.size() - 1) {
-            System.out.println("nhập lại choice : ");
-            choice = CheckException.checkExForParseInteger();
+        System.out.print("Nhập id dịch vụ: ");
+        String id = scanner.nextLine();
+        boolean flag = true;
+        while (flag) {
+            for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
+                if (id.equals(entry.getKey().getServiceCode())) {
+                    flag = false;
+                    return entry.getKey();
+                }
+            }
+            if (flag) {
+                System.out.println("Nhập sai, vui lòng nhập lại");
+                id = scanner.nextLine();
+            }
         }
-        return facilities1.get(choice);
+        return null;
     }
 
     @Override
@@ -77,7 +90,7 @@ public class BookingServiceImpl implements BookingService {
         bookingSet = ReaderWriter.readListBooking("src/key_study/uitl/data/booking.csv");
         int id = 1;
         if (!bookingSet.isEmpty()) {
-            id = bookingSet.size();
+            id = bookingSet.size()+1;
         }
         Customer customer = choiceCustomer();
         Facility facility = choiceFacility();

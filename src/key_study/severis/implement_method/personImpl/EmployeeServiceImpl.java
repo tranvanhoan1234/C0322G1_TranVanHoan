@@ -21,7 +21,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 //    public Employee(String fullName, String dateOfBirth, String gender, Integer citizenId,
 //    Long numberPhone, String gmail, Integer employeeCode, String level, String position, String salary) {
+public int check() {
+    List<Employee> list = ReaderWriter.readFileEmployee();
+    int id = 1; // gán id = 1
+    if (list.isEmpty()) { //kiểm tra nếu rỗng return 1;
+        return id;
+    } else {
+        for (Employee item : list) {  //duyệt mảng
+            if (id < item.getEmployeeCode()) { //nếu id < id hiện tại
+                id = item.getEmployeeCode(); // gán lại id
+            }
+        }
+        return (id + 1); //trả về id + thêm 1
 
+    }
+}
 
     public void editEmployee() {
         List<Employee> personArrayList = ReaderWriter.readFileEmployee();
@@ -139,8 +153,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Integer citizenId = CheckException.checkExForParseInteger();
         System.out.println("thêm số điện thoại nhân viên : ");
         Long numberPhone = CheckException.checkExForParseLong();
-        System.out.println("thêm mã nhân viên :  ");
-        Integer employeeCode =CheckException.checkExForParseInteger();
+       int employeeCode= check();
+//        System.out.println("thêm mã nhân viên :  ");
+//       Integer employeeCode =CheckException.checkExForParseInteger();
         System.out.println("thêm gmail nhân viên : ");
         String gmail = scanner.nextLine();
         String position = null;

@@ -26,7 +26,7 @@ static Scanner scanner=new Scanner(System.in);
         try {
             Pattern pattern = Pattern.compile(VILLA_REGEX);
             Matcher matcher = pattern.matcher(regex);
-            matcher.matches();
+            return matcher.matches();
 
         } catch (NumberFormatException e) {
             System.out.println("xin vui lòng nhập lại định đnag" ) ;

@@ -30,7 +30,7 @@ public class ReaderWriter {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file, true);
+            fileWriter = new FileWriter(file, false);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Customer custumer : list) {
                 bufferedWriter.write(custumer.writerPerson());
@@ -48,7 +48,7 @@ public class ReaderWriter {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file, true);
+            fileWriter = new FileWriter(file, false);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Employee employee : list) {
                 bufferedWriter.write(employee.writerPerson());
@@ -61,59 +61,59 @@ public class ReaderWriter {
         }
     }
 
-    public static void writeVilla(List<Villa> list) {
-        File file = new File(PATH_VILLA);
-        FileWriter fileWriter = null;
-        BufferedWriter bufferedWriter = null;
-        try {
-            fileWriter = new FileWriter(file, true);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            for (Villa villa : list) {
-                bufferedWriter.write(villa.readEndWriterFacility());
-                bufferedWriter.newLine();
-
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeHouse(List<House> list) {
-        File file = new File(PATH_HOUSE);
-        FileWriter fileWriter = null;
-        BufferedWriter bufferedWriter = null;
-        try {
-            fileWriter = new FileWriter(file, true);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            for (House house : list) {
-                bufferedWriter.write(house.readEndWriterFacility());
-                bufferedWriter.newLine();
-
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeRoom(List<Room> list) {
-        File file = new File(PATH_ROOM);
-        FileWriter fileWriter = null;
-        BufferedWriter bufferedWriter = null;
-        try {
-            fileWriter = new FileWriter(file, false);
-            bufferedWriter = new BufferedWriter(fileWriter);
-            for (Room room : list) {
-                bufferedWriter.write(room.readEndWriterFacility());
-                bufferedWriter.newLine();
-
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void writeVilla(List<Villa> list) {
+//        File file = new File(PATH_VILLA);
+//        FileWriter fileWriter = null;
+//        BufferedWriter bufferedWriter = null;
+//        try {
+//            fileWriter = new FileWriter(file, true);
+//            bufferedWriter = new BufferedWriter(fileWriter);
+//            for (Villa villa : list) {
+//                bufferedWriter.write(villa.readEndWriterFacility());
+//                bufferedWriter.newLine();
+//
+//            }
+//            bufferedWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public static void writeHouse(List<House> list) {
+//        File file = new File(PATH_HOUSE);
+//        FileWriter fileWriter = null;
+//        BufferedWriter bufferedWriter = null;
+//        try {
+//            fileWriter = new FileWriter(file, true);
+//            bufferedWriter = new BufferedWriter(fileWriter);
+//            for (House house : list) {
+//                bufferedWriter.write(house.readEndWriterFacility());
+//                bufferedWriter.newLine();
+//
+//            }
+//            bufferedWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public static void writeRoom(List<Room> list) {
+//        File file = new File(PATH_ROOM);
+//        FileWriter fileWriter = null;
+//        BufferedWriter bufferedWriter = null;
+//        try {
+//            fileWriter = new FileWriter(file, false);
+//            bufferedWriter = new BufferedWriter(fileWriter);
+//            for (Room room : list) {
+//                bufferedWriter.write(room.readEndWriterFacility());
+//                bufferedWriter.newLine();
+//
+//            }
+//            bufferedWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public static void writeBooking(Set<Booking> list) {
         File file = new File(PATH_BOOKING);
@@ -151,20 +151,36 @@ public class ReaderWriter {
         }
     }
 
+    public static void write(List<String> list, String path) {
+        try (FileWriter fileWriter = new FileWriter(path);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+
+            for (String s : list) {
+                bufferedWriter.write(s);
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
     public static void writeFileFacility(Map<Facility, Integer> lists) {
         List<String> listHouse = new ArrayList<>();
         List<String> listVilla = new ArrayList<>();
         List<String> listRoom = new ArrayList<>();
         for (Map.Entry<Facility, Integer> entry : lists.entrySet()) {
             if (entry.getKey() instanceof House) {
-                listHouse.add((entry.getKey()).readEndWriterFacility()+","+entry.getValue());
+                listHouse.add((entry.getKey()).readEndWriterFacility() + "," + entry.getValue());
             } else if (entry.getKey() instanceof Room) {
-                listRoom.add((entry.getKey()).readEndWriterFacility()+","+entry.getValue());
+                listRoom.add((entry.getKey()).readEndWriterFacility() + "," + entry.getValue());
             } else {
                 listVilla.add((entry.getKey()).readEndWriterFacility()+","+entry.getValue());
             }
-        }
 
+        }
+      write (listHouse,"src/key_study/uitl/data/house.csv");
+      write (listVilla,"src/key_study/uitl/data/villa.csv");
+      write (listRoom,"src/key_study/uitl/data/room.csv");
     }
 
 
@@ -253,6 +269,7 @@ public class ReaderWriter {
         }
         return rooms;
     }
+
     public static Set<Booking> readListBooking(String pathFile) {
         Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
 

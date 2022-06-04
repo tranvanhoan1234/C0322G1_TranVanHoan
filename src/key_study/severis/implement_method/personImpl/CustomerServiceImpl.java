@@ -1,12 +1,10 @@
 package key_study.severis.implement_method.personImpl;
 
 import key_study.model.person.Customer;
-import key_study.model.person.Employee;
 import key_study.uitl.check_exception.CheckException;
 import key_study.uitl.reader_writer.ReaderWriter;
 import key_study.uitl.regex.Regex;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -94,13 +92,30 @@ public class CustomerServiceImpl implements ICustomerService {
         }
     }
 
+    public int check() {
+        List<Customer> list = ReaderWriter.readFileCustumer();
+        int id = 1; // gán id = 1
+        if (list.isEmpty()) { //kiểm tra nếu rỗng return 1;
+            return id;
+        } else {
+            for (Customer item : list) {  //duyệt mảng
+                if (id < item.getCustomerCode()) { //nếu id < id hiện tại
+                    id = item.getCustomerCode(); // gán lại id
+                }
+            }
+            return (id + 1); //trả về id + thêm 1
+
+        }
+    }
+
     @Override
     public void add() {
         List<Customer> customerList = ReaderWriter.readFileCustumer();
-        System.out.println("thêm mã khách hàng : ");
-        Integer customerCode = CheckException.checkExForParseInteger();
+
+        Integer customerCode = check();
+//        customerCode=check();
         System.out.println("thêm ngày sinh khách hàng: ");
-        String dateOfBirth =Regex.checkExForParseAge(scanner.nextLine());
+        String dateOfBirth = Regex.checkExForParseAge(scanner.nextLine());
         System.out.println("thêm giới tính khách hàng : ");
         String gender = scanner.nextLine();
         System.out.println("thêm số cccd khách hàng: ");

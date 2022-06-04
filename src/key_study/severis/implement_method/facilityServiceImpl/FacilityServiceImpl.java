@@ -14,41 +14,14 @@ import java.util.*;
 public class FacilityServiceImpl implements FacilityService {
     private static Scanner scanner = new Scanner(System.in);
     private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap();
-    private static List<Facility> facilityList = new ArrayList<>();
-    private static List<Villa> villaList = new LinkedList<>();
-    private static List<House> houseList = new LinkedList<>();
-    private static List<Room> roomList = new LinkedList<>();
-
-
-//    static {
-//        Villa villa1 = new Villa("", "VILA", 123.2, 123, 122, 121, "PRO", 2.3);
-//        House houseList1 = new House("hose", "hose", 100.4, 19, 123, 123, "vip", "324");
-//        Room room = new Room("room", "room", 1212.2, 22, 122, 12, "có chục em chân dài phục vụ");
-//        facilityIntegerMap.put(houseList1, 1);
-//        facilityIntegerMap.put(villa1, 4);
-//        facilityIntegerMap.put(room, 1);
-//    }
-
     public Set<Facility> senFacility() {
         return (Set<Facility>) facilityIntegerMap;
     }
 
     @Override
     public void displayFacility() {
+        facilityIntegerMap.clear();
         ReaderWriter.readFileFacility(facilityIntegerMap);
-//        for (House house : houseList) {
-//            addMaintenance(house);
-//        }
-//        for (Villa villa : villaList) {
-//            addMaintenance(villa);
-//        }
-//        for (Room room : roomList) {
-//            addMaintenance(room);
-//        }
-//        for (int i = 0; i < facilityIntegerMap.size(); i++) {
-//            System.out.println("tên dịch vụ: " + i);
-//            System.out.println("số lần: " + facilityIntegerMap.keySet());
-//        }
         for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
             System.out.println("tên dịch dụ: " + element.getKey().getServiceName());
             System.out.println(element.getKey() + ", số lần sữ dụng: " + element.getValue());
@@ -57,49 +30,21 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-
-    public void addMaintenance(Facility facility) {
-        if (facilityIntegerMap.isEmpty()) {
-            facilityIntegerMap.put(facility, 1);
-        } else {
-            boolean flag = false;
-            for (Facility key : facilityIntegerMap.keySet()) {
-                if (facility.equals(key)) {
-                    checkMaintenance(key);
-                    facilityIntegerMap.put(key, facilityIntegerMap.get(key) + 1);
-                    flag = true;
-                    break;
-                }
-            }
-            if (!flag) {
-                facilityIntegerMap.put(facility, 1);
-            }
-        }
-        ReaderWriter.writeFileFacility(facilityIntegerMap);
-    }
-
-    @Override
     public void displayMaintenance() {
-        if (!facilityList.isEmpty()) {
-            for (Facility f : facilityList) {
-                System.out.println(f);
+        facilityIntegerMap.clear();
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
+        for (Map.Entry<Facility, Integer> facility : facilityIntegerMap.entrySet()) {
+            if (facility.getValue() >= 5) {
+                System.err.println(facility.getKey() + "số lần sử dụng: " + facility.getValue() + "Service is under maintenance!");
             }
-        } else {
-            System.out.println("danh sach rong");
         }
     }
 
-    @Override
-    public void checkMaintenance(Facility facility) {
-        if (facilityIntegerMap.get(facility) >= 2) {
-            System.err.println("Service is under maintenance!");
-            facilityList.add(facility);
-            facilityIntegerMap.put(facility, 0);
-        }
-    }
 
     @Override
     public void addHose() {
+        facilityIntegerMap.clear();
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
         System.out.println("thêm mã dịch vụ định dạng SVHO-yy : ");
         String serviceCode = scanner.nextLine();
         while (!Regex.hoseRegex(serviceCode)) {
@@ -153,13 +98,15 @@ public class FacilityServiceImpl implements FacilityService {
         }
         House hose = new House(serviceCode, serviceName, usableArea, rentalCosts,
                 maximumNumberOfPeople, rentalType, roomStandard, numberOfFloors);
-        houseList.add(hose);
-        ReaderWriter.writeHouse(houseList);
+        facilityIntegerMap.put(hose, 0);
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
     }
 //    public Villa(String serviceCode, String serviceName, double usableArea, Integer rentalCosts, Integer maximumNumberOfPeople, Integer rentalType, String roomStandard, Double poolArea) {
 
     @Override
     public void addVilla() {
+        facilityIntegerMap.clear();
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
         System.out.println("Thêm mã mã dịch vụ theo định dạng SVVL-YYYY : ");
         String serviceCode = scanner.nextLine();
         while (!Regex.villaRegex(serviceCode)) {
@@ -209,17 +156,19 @@ public class FacilityServiceImpl implements FacilityService {
             poolArea = CheckException.checkExForParseDouble();
         }
         Villa villa = new Villa(serviceCode, serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, roomStandard, poolArea);
-        villaList.add(villa);
-        ReaderWriter.writeVilla(villaList);
+        facilityIntegerMap.put(villa, 0);
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
 
     }
 //    public Room(String serviceCode, String serviceName, double usableArea, Integer rentalCosts, Integer maximumNumberOfPeople, Integer rentalType, String freeServiceIncluded) {
 
     @Override
     public void addRoom() {
+        facilityIntegerMap.clear();
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
         System.out.println("Thêm mã mã dịch vụ : ");
         String serviceCode = scanner.nextLine();
-        while (!Regex.villaRegex(serviceCode)) {
+        while (!Regex.roomRegex(serviceCode)) {
             System.err.print("nhập không đúng xin nhập lại định dạng SVVL-YYYY: ");
             serviceCode = scanner.nextLine();
         }
@@ -256,7 +205,7 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Thêm vâu chờ : ");
         String freeServiceIncluded = scanner.nextLine();
         Room room = new Room(serviceCode, serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, freeServiceIncluded);
-        roomList.add(room);
-        ReaderWriter.writeRoom(roomList);
+        facilityIntegerMap.put(room, 0);
+        ReaderWriter.writeFileFacility(facilityIntegerMap);
     }
 }
