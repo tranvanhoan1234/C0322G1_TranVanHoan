@@ -1,5 +1,6 @@
 package cong_ty_abc.severis;
 
+import cong_ty_abc.model.NhanVienQuanLy;
 import cong_ty_abc.model.NhanVienSanXuat;
 import cong_ty_abc.uitl.read_writer.ReadEndWriter;
 
@@ -18,12 +19,27 @@ public class NhanVienSanXuatImpl implements Severis{
         }
     }
 //    public NhanVienSanXuat(Integer maNhanVien, Integer luongCoBan, String hoTen, String ngaySinh, String diaChi, Integer soSanPham, Integer giaMoiSanPham) {
+public int check() {
+    List<NhanVienSanXuat>list= ReadEndWriter.readFileSanXuat();
 
+    int id = 1; // gán id = 1
+    if (list.isEmpty()) { //kiểm tra nếu rỗng return 1;
+        return id;
+    } else {
+        for (NhanVienSanXuat item: list) {  //duyệt mảng
+            if (id < item.getMaNhanVien()) { //nếu id < id hiện tại
+                id = item.getMaNhanVien(); // gán lại id
+            }
+        }
+        return (id + 1); //trả về id + thêm 1
+
+    }
+}
     @Override
     public void add() {
         List<NhanVienSanXuat>list= ReadEndWriter.readFileSanXuat();
-        System.out.println("thêm mã nhân viên san xuất");
-        Integer maNhanVien= Integer.valueOf(scanner.nextLine());
+
+        Integer maNhanVien= check();
         System.out.println("thêm nhân viên san xuất");
         Integer luongCoBan = Integer.valueOf(scanner.nextLine());
         System.out.println("thêm nhân viên san xuất");
@@ -44,8 +60,6 @@ public class NhanVienSanXuatImpl implements Severis{
     @Override
     public void delete() {
         List<NhanVienSanXuat>list= ReadEndWriter.readFileSanXuat();
-        boolean flag = true;
-
         System.out.println("nhập id muốn xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < list.size(); i++) {

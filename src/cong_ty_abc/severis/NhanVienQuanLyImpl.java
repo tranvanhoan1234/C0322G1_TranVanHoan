@@ -3,6 +3,8 @@ package cong_ty_abc.severis;
 import cong_ty_abc.model.CongTyABC;
 import cong_ty_abc.model.NhanVienQuanLy;
 import cong_ty_abc.uitl.read_writer.ReadEndWriter;
+import key_study.model.person.Customer;
+import key_study.uitl.reader_writer.ReaderWriter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -22,13 +24,27 @@ public class NhanVienQuanLyImpl implements Severis {
 
         }
     }
+    public int check() {
+        List<NhanVienQuanLy> nhanVienQuanLIES = ReadEndWriter.readFileQuanLy();
+        int id = 1; // gán id = 1
+        if (nhanVienQuanLIES.isEmpty()) { //kiểm tra nếu rỗng return 1;
+            return id;
+        } else {
+            for (NhanVienQuanLy item : nhanVienQuanLIES) {  //duyệt mảng
+                if (id < item.getMaNhanVien()) { //nếu id < id hiện tại
+                    id = item.getMaNhanVien(); // gán lại id
+                }
+            }
+            return (id + 1); //trả về id + thêm 1
+
+        }
+    }
+
 
     @Override
     public void add() {
         List<NhanVienQuanLy> nhanVienQuanLIES = ReadEndWriter.readFileQuanLy();
-
-        System.out.println("thêm tên nhân viên quản lý: ");
-        Integer maNhanVien = Integer.valueOf(scanner.nextLine());
+        Integer maNhanVien = check();
         System.out.println("thêm lương cơ bản nhân viên quản lý: ");
         Integer luongCoBan = Integer.valueOf(scanner.nextLine());
         System.out.println("thêm họ tên nhân viên quản lý: ");
