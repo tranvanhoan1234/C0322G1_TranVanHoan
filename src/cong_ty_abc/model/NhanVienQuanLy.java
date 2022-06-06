@@ -7,10 +7,6 @@ public class NhanVienQuanLy extends CongTyABC {
     public NhanVienQuanLy() {
     }
 
-    public NhanVienQuanLy(Integer heSoLuong) {
-        this.heSoLuong = heSoLuong;
-    }
-
     public NhanVienQuanLy(Integer maNhanVien, Integer luongCoBan, String hoTen, String ngaySinh, String diaChi, Integer heSoLuong) {
         super(maNhanVien, luongCoBan, hoTen, ngaySinh, diaChi);
         this.heSoLuong = heSoLuong;

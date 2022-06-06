@@ -1,7 +1,7 @@
 package cong_ty_abc.controller;
 
-import cong_ty_abc.severis.NhanVienQuanLySeveris;
-import cong_ty_abc.severis.NhanVienSanXuatSeveris;
+import cong_ty_abc.severis.NhanVienQuanLyImpl;
+import cong_ty_abc.severis.NhanVienSanXuatImpl;
 
 import java.util.Scanner;
 
@@ -38,7 +38,7 @@ public class DisplayCongTy {
     }
 
     public void displayNhanVienQuanLy() {
-        NhanVienQuanLySeveris nhanVienQuanLy = new NhanVienQuanLySeveris();
+        NhanVienQuanLyImpl nhanVienQuanLy = new NhanVienQuanLyImpl();
         boolean flag = true;
         int choice;
         do {
@@ -67,7 +67,7 @@ public class DisplayCongTy {
     }
 
     public void displaySanXuat() {
-        NhanVienSanXuatSeveris nhanVienQuanLySeveris = new NhanVienSanXuatSeveris();
+        NhanVienSanXuatImpl nhanVienQuanLySeveris = new NhanVienSanXuatImpl();
         boolean flag = true;
         int choice;
         do {

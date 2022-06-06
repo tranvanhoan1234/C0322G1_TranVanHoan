@@ -40,7 +40,7 @@ public class NhanVienSanXuat extends CongTyABC {
 
     @Override
     public String toString() {
-        return "NhanVienSanXuatSeveris : " +super.toString()+
+        return "NhanVienSanXuatImpl : " +super.toString()+
                 "soSanPham=" + soSanPham +
                 ", giaMoiSanPham=" + giaMoiSanPham;
     }

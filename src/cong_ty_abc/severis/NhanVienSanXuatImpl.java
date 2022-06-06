@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NhanVienSanXuatSeveris implements Severis{
+public class NhanVienSanXuatImpl implements Severis{
     static Scanner scanner=new Scanner(System.in);
     static List<NhanVienSanXuat>list=new ArrayList<>();
     @Override
@@ -67,6 +67,18 @@ public class NhanVienSanXuatSeveris implements Severis{
 
     @Override
     public void search() {
+        List<NhanVienSanXuat>list= ReadEndWriter.readFileSanXuat();
+        System.out.println("nhập ten sản phẩm muốn tìm: ");
+        String name = scanner.nextLine();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getHoTen().contains(name)) {
+                System.out.println(list.get(i));
+
+            }
+
+        }
+
+        }
 
     }
-}
+

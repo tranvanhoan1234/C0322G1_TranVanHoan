@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NhanVienQuanLySeveris implements Severis {
+public class NhanVienQuanLyImpl implements Severis {
     static Scanner scanner = new Scanner(System.in);
 
 
@@ -71,6 +71,15 @@ public class NhanVienQuanLySeveris implements Severis {
 
     @Override
     public void search() {
+        List<NhanVienQuanLy> nhanVienQuanLIES = ReadEndWriter.readFileQuanLy();
+        System.out.println("nhập mã sản phẩm muốn tìm: ");
+        Integer maNhanVien = Integer.valueOf(scanner.nextLine());
+        for (int i = 0; i < nhanVienQuanLIES.size(); i++) {
+            if (nhanVienQuanLIES.get(i).getMaNhanVien().equals(maNhanVien)) {
+                System.out.println(nhanVienQuanLIES.get(i));
 
+            }
+
+        }
     }
 }
