@@ -57,6 +57,12 @@ public class DisplayCongTy {
                 case 2:
                     nhanVienQuanLy.add();
                     break;
+                    case 3:
+                    nhanVienQuanLy.delete();
+                    break;
+                    case 4:
+                    nhanVienQuanLy.search();
+                    break;
                 case 0:
                     return;
                 default:
@@ -88,6 +94,9 @@ public class DisplayCongTy {
                     break;
                     case 3:
                     nhanVienQuanLySeveris.delete();
+                    break;
+                case 4:
+                    nhanVienQuanLySeveris.search();
                     break;
                 case 0:
                     return;
