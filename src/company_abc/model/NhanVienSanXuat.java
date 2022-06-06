@@ -29,7 +29,7 @@ public class NhanVienSanXuat extends CompanyABC {
     @Override
     public String toString() {
         return super.toString() +
-                "NhanVienSanXuat : " +
+                "NhanVienSanXuatSeveris : " +
                 "soSanPham=" + soSanPham +
                 "\t lương : " + new BigDecimal(tinhLuong());
     }
