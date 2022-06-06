@@ -43,7 +43,26 @@ public class NhanVienSanXuatSeveris implements Severis{
 
     @Override
     public void delete() {
+        List<NhanVienSanXuat>list= ReadEndWriter.readFileSanXuat();
+        boolean flag = true;
 
+        System.out.println("nhập id muốn xóa: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getMaNhanVien() == id) {
+                System.out.println("1.yes\n" + "2. no\n");
+                int choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        list.remove(list.get(i));
+                        break;
+                    case 2:
+                        System.out.println("quay lại ct");
+                        break;
+                }
+                break;
+            }
+        } ReadEndWriter.writeSanXuat(list);
     }
 
     @Override
