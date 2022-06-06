@@ -127,6 +127,8 @@ static Scanner scanner=new Scanner(System.in);
 
 
     }
+
+
     public static int checkRegexPoint()  {
         int value = CheckException.checkExForParseInteger();
         while (!String.valueOf(value).matches(NUMBEROFFOLOORS_REGEX )) {
