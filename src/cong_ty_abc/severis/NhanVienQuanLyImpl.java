@@ -48,6 +48,10 @@ public class NhanVienQuanLyImpl implements Severis {
         String hoTen = scanner.nextLine();
         System.out.println("thêm ngày sinh nhân viên quản lý: ");
         String ngaySinh = scanner.nextLine();
+        while (!key_study.uitl.regex.Regex.yearRegex(String.valueOf(ngaySinh))) {
+            System.err.print("nhập không đúng xin nhập lại : ");
+            ngaySinh = scanner.nextLine();
+        }
         System.out.println("thêm nhân địa chỉ viên quản lý: ");
         String diaChi = scanner.nextLine();
         System.out.println("thêm nhân hệ số lương viên quản lý: ");

@@ -3,6 +3,7 @@ package cong_ty_abc.severis;
 import cong_ty_abc.model.NhanVienSanXuat;
 import cong_ty_abc.uitl.check_exception.NotFoundEmployeeException;
 import cong_ty_abc.uitl.read_writer.ReadEndWriter;
+import cong_ty_abc.uitl.regex.Regex;
 import key_study.uitl.check_exception.IvalidHoseEpception;
 
 import java.util.ArrayList;
@@ -41,17 +42,21 @@ public int check() {
         List<NhanVienSanXuat>list= ReadEndWriter.readFileSanXuat();
 
         Integer maNhanVien= check();
-        System.out.println("thêm nhân viên san xuất");
+        System.out.println("thêm luong co ban nhân viên san xuất");
         Integer luongCoBan = Integer.valueOf(scanner.nextLine());
-        System.out.println("thêm nhân viên san xuất");
+        System.out.println("thêm ho ten nhân viên san xuất");
         String hoTen=scanner.nextLine();
-        System.out.println("thêm nhân viên san xuất");
-        String ngaySinh=scanner.nextLine();
-        System.out.println("thêm nhân viên san xuất");
+        System.out.println("thêm ngay sinh nhân viên san xuất");
+        String ngaySinh= String.valueOf(Regex.yearRegex(scanner.nextLine()));
+        while (!key_study.uitl.regex.Regex.yearRegex(String.valueOf(ngaySinh))) {
+            System.err.print("nhập không đúng xin nhập lại : ");
+            ngaySinh = scanner.nextLine();
+        }
+        System.out.println("thêm dịa chỉ nhân viên san xuất");
         String diaChi=scanner.nextLine();
-        System.out.println("thêm nhân viên san xuất");
+        System.out.println("thêm so san pham nhân viên san xuất");
         Integer soSanPham= Integer.valueOf(scanner.nextLine());
-        System.out.println("thêm nhân viên san xuất");
+        System.out.println("thêm gia moi san phẩm nhân viên san xuất");
         Integer giaMoiSanPham= Integer.valueOf(scanner.nextLine());
         NhanVienSanXuat nhanVienSanXuat=new NhanVienSanXuat(maNhanVien,luongCoBan,hoTen,ngaySinh,diaChi,soSanPham,giaMoiSanPham);
         list.add(nhanVienSanXuat);

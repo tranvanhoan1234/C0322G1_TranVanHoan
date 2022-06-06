@@ -17,7 +17,7 @@ public class DisplayCongTy {
             System.out.println("---------- VEHICLE MANAGER MENU ----------");
             System.out.println("1.nhân viên quản lí" + "\n" +
                     "2. nhân viên san xuất " + "\n" +
-                    "0. Exit" + "\n");
+                    "3. Exit" + "\n");
             System.out.print("Your choice: ");
             int choice;
             choice = Integer.parseInt(sc.nextLine());
@@ -28,8 +28,8 @@ public class DisplayCongTy {
                 case 2:
                     displaySanXuat();
                     break;
-                case 0:
-                    return;
+                case 3:
+                System.exit(3);
                 default:
                     System.out.println("---------- CHOICE AGAIN! ----------");
                     break;
@@ -47,7 +47,7 @@ public class DisplayCongTy {
                     "2. Add " + "\n" +
                     "3. Delete " + "\n" +
                     "4. Search" + "\n" +
-                    "0. Exit" + "\n");
+                    "5. Exit" + "\n");
             System.out.print("Your choice: ");
             choice = Integer.parseInt(sc.nextLine());
             switch (choice) {
@@ -63,7 +63,7 @@ public class DisplayCongTy {
                     case 4:
                     nhanVienQuanLy.search();
                     break;
-                case 0:
+                case 5:
                     return;
                 default:
                     System.out.println("---------- nahajp k đúng chọn lại ----------");
@@ -82,7 +82,7 @@ public class DisplayCongTy {
                     "2. Add " + "\n" +
                     "3. Delete " + "\n" +
                     "4. Search" + "\n" +
-                    "0. quay lại" + "\n");
+                    "5. quay lại" + "\n");
             System.out.print("Your choice: ");
             choice = Integer.parseInt(sc.nextLine());
             switch (choice) {
@@ -98,7 +98,7 @@ public class DisplayCongTy {
                 case 4:
                     nhanVienQuanLySeveris.search();
                     break;
-                case 0:
+                case 5:
                     return;
                 default:
                     System.out.println("---------- nhập không đúng chọn lại ----------");
