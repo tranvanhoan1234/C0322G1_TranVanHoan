@@ -48,8 +48,26 @@ public class NhanVienQuanLySeveris implements Severis {
 
     @Override
     public void delete() {
-
+        List<NhanVienQuanLy> nhanVienQuanLIES = ReadEndWriter.readFileQuanLy();
+        System.out.println("nhập id muốn xóa: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < nhanVienQuanLIES.size(); i++) {
+            if (nhanVienQuanLIES.get(i).getMaNhanVien() == id) {
+                System.out.println("1.yes\n" + "2. no\n");
+                int choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        nhanVienQuanLIES.remove(nhanVienQuanLIES.get(i));
+                        break;
+                    case 2:
+                        System.out.println("quay lại ct");
+                        break;
+                }
+                break;
+            }
+        } ReadEndWriter.writeQuanLy(nhanVienQuanLIES);
     }
+
 
     @Override
     public void search() {
