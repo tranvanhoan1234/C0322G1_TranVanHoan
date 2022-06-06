@@ -1,12 +1,9 @@
 package cong_ty_abc.severis;
 
-import cong_ty_abc.model.CongTyABC;
 import cong_ty_abc.model.NhanVienQuanLy;
+import cong_ty_abc.uitl.check_exception.NotFoundEmployeeException;
 import cong_ty_abc.uitl.read_writer.ReadEndWriter;
-import key_study.model.person.Customer;
-import key_study.uitl.reader_writer.ReaderWriter;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,19 +65,25 @@ public class NhanVienQuanLyImpl implements Severis {
         System.out.println("nhập id muốn xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < nhanVienQuanLIES.size(); i++) {
-            if (nhanVienQuanLIES.get(i).getMaNhanVien() == id) {
-                System.out.println("1.yes\n" + "2. no\n");
-                int choice = Integer.parseInt(scanner.nextLine());
-                switch (choice) {
-                    case 1:
-                        nhanVienQuanLIES.remove(nhanVienQuanLIES.get(i));
-                        break;
-                    case 2:
-                        System.out.println("quay lại ct");
-                        break;
+            try {
+                if (nhanVienQuanLIES.get(i).getMaNhanVien() == id) {
+                    System.out.println("1.yes\n" + "2. no\n");
+                    int choice = Integer.parseInt(scanner.nextLine());
+                    switch (choice) {
+                        case 1:
+                            nhanVienQuanLIES.remove(nhanVienQuanLIES.get(i));
+                            break;
+                        case 2:
+                            System.out.println("quay lại ct");
+                            break;
+                    }
+                    break;
                 }
-                break;
+                throw new NotFoundEmployeeException("khoogn tồn tại");
+            } catch (NotFoundEmployeeException e) {
+                e.printStackTrace();
             }
+
         } ReadEndWriter.writeQuanLy(nhanVienQuanLIES);
     }
 
