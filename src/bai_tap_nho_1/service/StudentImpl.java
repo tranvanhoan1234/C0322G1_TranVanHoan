@@ -58,8 +58,16 @@ public class StudentImpl implements Service {
         String diaChi = scanner.nextLine();
         System.out.println("thêm ma sinh vien học sinh");
         Integer maSinhVien = Integer.valueOf(scanner.nextLine());
+        while (!Regex.ma(String.valueOf(maSinhVien))) {
+            System.err.print("nhập không đúng xin nhập lại : ");
+            maSinhVien = Integer.valueOf(scanner.nextLine());
+        }
         System.out.println("thêm diem trung binh học sinh");
         Integer diemTrungBinh = Integer.valueOf(scanner.nextLine());
+        while (!Regex.diemTrungBinh(String.valueOf(diemTrungBinh))) {
+            System.err.print("nhập không đúng xin nhập lại : ");
+            diemTrungBinh = Integer.valueOf(scanner.nextLine());
+        }
         Strudent student = new Strudent(id, ten, ngaySinh, gioiTinh, diaChi, maSinhVien, diemTrungBinh);
         truongHocs.add(student);
         ReadEndWrite.writeStudent(truongHocs);
@@ -108,7 +116,6 @@ public class StudentImpl implements Service {
         }
         System.out.println("đã sắp xếp theo tên: ");
         ReadEndWrite.writeStudent(truongHocs);
-        ReadEndWrite.writeStudent(truongHocs);
         display();
     }
 
@@ -122,19 +129,17 @@ public class StudentImpl implements Service {
         }
         System.out.println("đã sắp xếp theo tên: ");
         ReadEndWrite.writeStudent(truongHocs);
-        ReadEndWrite.writeStudent(truongHocs);
         display();
     }
 
     @Override
     public void edit() {
-        List<Strudent> truongHocs = ReadEndWrite.readFileStudent();
+        List<Strudent> strudents = ReadEndWrite.readFileStudent();
         System.out.println("nhap id muon sua: ");
         int id = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < truongHocs.size(); i++) {
-            if (truongHocs.get(i).getId() == id) {
+        for (int i = 0; i < strudents.size(); i++) {
+            if (strudents.get(i).getId() == id) {
                 Integer id1 = check();
-
                 System.out.println("sửa ten học sinh");
                 String ten = scanner.nextLine();
 
@@ -157,7 +162,7 @@ public class StudentImpl implements Service {
                 Integer diemTrungBinh = Regex.checkRegexInterger();
 
                 Strudent student = new Strudent(id1, ten, ngaySinh, gioiTinh, diaChi, maSinhVien, diemTrungBinh);
-                truongHocs.set(i, student);
+                strudents.set(i, student);
                 break;
             }
         }

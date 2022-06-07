@@ -13,7 +13,21 @@ public class Regex {
         return matcher.matches();
 
 
-    }    private static final String NUMBEROFFOLOORS_REGEX = "^[0-9]{10}$";
+    }
+  private static final String TRUNG_BINH = "^10{1}|[0-9]$";
+    public static boolean diemTrungBinh(String regex) {
+        Pattern pattern = Pattern.compile(TRUNG_BINH);
+        Matcher matcher = pattern.matcher(regex);
+        return matcher.matches();
+    }
+    private static final String MA = "^10{1}|[0-9]$";
+    public static boolean ma(String regex) {
+        Pattern pattern = Pattern.compile(TRUNG_BINH);
+        Matcher matcher = pattern.matcher(regex);
+        return matcher.matches();
+    }
+
+    private static final String NUMBEROFFOLOORS_REGEX = "^[0-9]{8}$";
     public static Integer checkRegexInterger()  {
         Integer value = CheckException.checkExForParseInteger();
         while (!String.valueOf(value).matches(YEAR_REGEX )) {
