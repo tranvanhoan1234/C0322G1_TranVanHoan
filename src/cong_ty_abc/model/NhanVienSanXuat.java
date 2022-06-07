@@ -7,15 +7,15 @@ public class NhanVienSanXuat extends CongTyABC {
     public NhanVienSanXuat() {
     }
 
-
-    public NhanVienSanXuat(Integer maNhanVien, Integer luongCoBan, String hoTen, String ngaySinh, String diaChi, Integer soSanPham, Integer giaMoiSanPham) {
-        super(maNhanVien, luongCoBan, hoTen, ngaySinh, diaChi);
+    public NhanVienSanXuat(Integer id, Integer maNhanVien, String hoTen, String ngaySinh, String diaChi, Integer soSanPham, Integer giaMoiSanPham) {
+        super(id, maNhanVien, hoTen, ngaySinh, diaChi);
         this.soSanPham = soSanPham;
         this.giaMoiSanPham = giaMoiSanPham;
     }
+
     @Override
     public String readEndWriterCongTy() {
-        return getMaNhanVien()+","+getLuongCoBan()+","+getHoTen()+","+getNgaySinh()+","+getDiaChi()+","+getSoSanPham()+","+getGiaMoiSanPham();
+        return  "2,"+getId()+","+getMaNhanVien()+","+getHoTen()+","+getNgaySinh()+","+getDiaChi()+","+getSoSanPham()+","+getGiaMoiSanPham();
 
     }
 
@@ -40,7 +40,7 @@ public class NhanVienSanXuat extends CongTyABC {
 
     @Override
     public String toString() {
-        return "NhanVienSanXuatImpl : " +super.toString()+
+        return "NhanVienSanXuat : " +super.toString()+
                 "soSanPham=" + soSanPham +
                 ", giaMoiSanPham=" + giaMoiSanPham;
     }

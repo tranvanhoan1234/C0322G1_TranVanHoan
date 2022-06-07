@@ -1,8 +1,8 @@
 package cong_ty_abc.model;
 
 public abstract class CongTyABC {
+    private Integer id;
     private Integer maNhanVien;
-    private Integer luongCoBan;
     private String hoTen;
     private String ngaySinh;
     private String diaChi;
@@ -10,12 +10,20 @@ public abstract class CongTyABC {
     public CongTyABC() {
     }
 
-    public CongTyABC(Integer maNhanVien, Integer luongCoBan, String hoTen, String ngaySinh, String diaChi) {
+    public CongTyABC(Integer id, Integer maNhanVien, String hoTen, String ngaySinh, String diaChi) {
+        this.id = id;
         this.maNhanVien = maNhanVien;
-        this.luongCoBan = luongCoBan;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.diaChi = diaChi;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getMaNhanVien() {
@@ -24,14 +32,6 @@ public abstract class CongTyABC {
 
     public void setMaNhanVien(Integer maNhanVien) {
         this.maNhanVien = maNhanVien;
-    }
-
-    public Integer getLuongCoBan() {
-        return luongCoBan;
-    }
-
-    public void setLuongCoBan(Integer luongCoBan) {
-        this.luongCoBan = luongCoBan;
     }
 
     public String getHoTen() {
@@ -57,17 +57,18 @@ public abstract class CongTyABC {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
-    public abstract String readEndWriterCongTy();
 
     @Override
     public String toString() {
-        return "CongTyABC{" +
-                "maNhanVien=" + maNhanVien +
-                ", luongCoBan=" + luongCoBan +
+        return "CongTyABC" +
+                "id=" + id +
+                ", maNhanVien=" + maNhanVien +
                 ", hoTen='" + hoTen + '\'' +
                 ", ngaySinh='" + ngaySinh + '\'' +
-                ", diaChi='" + diaChi + '\'' +
-                '}';
+                ", diaChi='" + diaChi + '\'';
     }
+
+    public abstract String readEndWriterCongTy();
+
 
 }

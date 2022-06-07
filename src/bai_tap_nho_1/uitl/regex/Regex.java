@@ -1,6 +1,6 @@
-package cong_ty_abc.uitl.regex;
+package bai_tap_nho_1.uitl.regex;
 
-import key_study.uitl.check_exception.CheckException;
+import bai_tap_nho_1.uitl.check_exception.CheckException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,19 +13,14 @@ public class Regex {
         return matcher.matches();
 
 
+    }    private static final String NUMBEROFFOLOORS_REGEX = "^[0-9]{10}$";
+    public static Integer checkRegexInterger()  {
+        Integer value = CheckException.checkExForParseInteger();
+        while (!String.valueOf(value).matches(YEAR_REGEX )) {
+            System.out.print("Enter again: ");
+            value =CheckException.checkExForParseInteger();
+        }
+        return value;
     }
-//    public static boolean numberOfFoloorsRegex(String regex) {
-//        Pattern pattern = Pattern.compile(NUMBEROFFOLOORS_REGEX);
-//        Matcher matcher = pattern.matcher(regex);
-//        return matcher.matches();
-//    }
-//    private static final String NUMBEROFFOLOORS_REGEX = "^[0-9]{10}$";
-//    public static Integer checkRegexInterger()  {
-//        Integer value = CheckException.checkExForParseDouble();
-//        while (!String.valueOf(value).matches(NUMBEROFFOLOORS_REGEX )) {
-//            System.out.print("Enter again: ");
-//            value = CheckException.checkExForParseDouble();
-//        }
-//        return value;
-//    }
+
 }

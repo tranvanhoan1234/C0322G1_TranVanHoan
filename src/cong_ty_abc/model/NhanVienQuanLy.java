@@ -2,20 +2,24 @@ package cong_ty_abc.model;
 
 public class NhanVienQuanLy extends CongTyABC {
 
+    private Integer luongCoBan;
     private Integer heSoLuong;
 
     public NhanVienQuanLy() {
     }
 
-    public NhanVienQuanLy(Integer maNhanVien, Integer luongCoBan, String hoTen, String ngaySinh, String diaChi, Integer heSoLuong) {
-        super(maNhanVien, luongCoBan, hoTen, ngaySinh, diaChi);
+    public NhanVienQuanLy(Integer id, Integer maNhanVien, String hoTen, String ngaySinh, String diaChi, Integer luongCoBan, Integer heSoLuong) {
+        super(id, maNhanVien, hoTen, ngaySinh, diaChi);
+        this.luongCoBan = luongCoBan;
         this.heSoLuong = heSoLuong;
     }
 
-    @Override
-    public String readEndWriterCongTy() {
-        return getMaNhanVien()+","+getLuongCoBan()+","+getHoTen()+","+getNgaySinh()+","+getDiaChi()+","+getHeSoLuong();
+    public Integer getLuongCoBan() {
+        return luongCoBan;
+    }
 
+    public void setLuongCoBan(Integer luongCoBan) {
+        this.luongCoBan = luongCoBan;
     }
 
     public Integer getHeSoLuong() {
@@ -27,9 +31,8 @@ public class NhanVienQuanLy extends CongTyABC {
     }
 
     @Override
-    public String toString() {
-        return "NhanVienQuanLy{" +super.toString()+
-                "heSoLuong=" + heSoLuong +
-                '}';
+    public String readEndWriterCongTy() {
+        return "1,"+","+getId()+","+getMaNhanVien()+","+getHoTen()+","+getNgaySinh()+","+getDiaChi()+","+getLuongCoBan()+","+getHeSoLuong();
+
     }
 }

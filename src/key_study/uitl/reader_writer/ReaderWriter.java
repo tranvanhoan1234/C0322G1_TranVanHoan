@@ -244,31 +244,31 @@ public class ReaderWriter {
         return villas;
     }
 
-    public static List<House> readFilHouse() {
-        List<String> stringList = readFileCsvToListStrinng(PATH_HOUSE);
-        List<House> houses = new ArrayList<>();
-        String[] array = null;
-        House house = null;
-        for (String str : stringList) {
-            array = str.split(",");
-            house = new House(array[0], array[1], Double.parseDouble(array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]), Integer.parseInt(array[5]), array[6], array[7]);
-            houses.add(house);
-        }
-        return houses;
-    }
-
-    public static List<Room> readFilRoom() {
-        List<String> stringList = readFileCsvToListStrinng(PATH_ROOM);
-        List<Room> rooms = new ArrayList<>();
-        String[] array = null;
-        Room room = null;
-        for (String str : stringList) {
-            array = str.split(",");
-            room = new Room(array[0], array[1], Double.parseDouble(array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]), Integer.parseInt(array[5]), array[6]);
-            rooms.add(room);
-        }
-        return rooms;
-    }
+//    public static List<House> readFilHouse() {
+//        List<String> stringList = readFileCsvToListStrinng(PATH_HOUSE);
+//        List<House> houses = new ArrayList<>();
+//        String[] array = null;
+//        House house = null;
+//        for (String str : stringList) {
+//            array = str.split(",");
+//            house = new House(array[0], array[1], Double.parseDouble(array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]), Integer.parseInt(array[5]), array[6], array[7]);
+//            houses.add(house);
+//        }
+//        return houses;
+//    }
+//
+//    public static List<Room> readFilRoom() {
+//        List<String> stringList = readFileCsvToListStrinng(PATH_ROOM);
+//        List<Room> rooms = new ArrayList<>();
+//        String[] array = null;
+//        Room room = null;
+//        for (String str : stringList) {
+//            array = str.split(",");
+//            room = new Room(array[0], array[1], Double.parseDouble(array[2]), Integer.parseInt(array[3]), Integer.parseInt(array[4]), Integer.parseInt(array[5]), array[6]);
+//            rooms.add(room);
+//        }
+//        return rooms;
+//    }
 
     public static Set<Booking> readListBooking(String pathFile) {
         Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());

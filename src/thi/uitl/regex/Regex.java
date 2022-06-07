@@ -1,8 +1,7 @@
-package key_study.uitl.regex;
+package thi.uitl.regex;
 
 import key_study.uitl.check_exception.AgeException;
 import key_study.uitl.check_exception.CheckException;
-import key_study.uitl.check_exception.IvalidHoseEpception;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -13,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class Regex {
     private static final String AGE_REGEX ="^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
-static Scanner scanner=new Scanner(System.in);
+    static Scanner scanner=new Scanner(System.in);
 //
 //            -	Mã dịch vụ phải đúng định dạng: SVXX-YYYY, với YYYY là các số từ 0-9, XX là:
 //            -	Nếu là Villa thì XX sẽ là VL
@@ -104,7 +103,7 @@ static Scanner scanner=new Scanner(System.in);
                     LocalDate age = LocalDate.parse(temp, dateTimeFormatter);
                     LocalDate now = LocalDate.now();
                     int current = Period.between(age, now).getYears();
-                    if (current < 100 && current > 18) {
+                    if (current < 10&& current > 18) {
                         check = false;
                     } else {
                         throw new AgeException("Nhập tuổi phải lớn hơn 18 tuổi NHỎ HƠN 100 ");
@@ -119,6 +118,7 @@ static Scanner scanner=new Scanner(System.in);
         }
         return temp;
     }
+    //tuổi
     private static final String YEAR_REGEX = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)(?:0?2|(?:Feb))\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
     public static boolean yearRegex(String regex) {
         Pattern pattern = Pattern.compile(YEAR_REGEX);
@@ -128,39 +128,13 @@ static Scanner scanner=new Scanner(System.in);
 
     }
 
-
+//vừa chex excepti on vừa number
     public static int checkRegexPoint()  {
         int value = CheckException.checkExForParseInteger();
         while (!String.valueOf(value).matches(NUMBEROFFOLOORS_REGEX )) {
-            System.out.print("Enter again: ");
+            System.out.print("Enter agai: ");
             value = CheckException.checkExForParseInteger();
         }
         return value;
     }
-
-    public static Double checkRegexInterger()  {
-        Double value = CheckException.checkExForParseDouble();
-        while (!String.valueOf(value).matches(NUMBEROFFOLOORS_REGEX )) {
-            System.out.print("Enter again: ");
-            value = CheckException.checkExForParseDouble();
-        }
-        return value;
-    }
-
-//    public static String checkRegexHouse() {
-//
-//        String value = scanner.nextLine();
-//       try{ while (!String.valueOf(value).matches(  HOUSE_REGEX)) {
-//            System.out.print("Enter again: ");
-//            value = scanner.nextLine();
-//            throw new IvalidHoseEpception("nhập không đúng xin nhập lại định dạng SVHO-YYYY:");
-//        }
-//
-//    }catch (IvalidHoseEpception e){
-//           System.err.print(e.getMessage());
-//       }catch (Exception e){
-//           System.err.println(e);
-//       }
-//       return value;
-//    }
 }

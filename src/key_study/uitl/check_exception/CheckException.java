@@ -56,10 +56,10 @@ public class CheckException {
                 int value1 = Integer.parseInt(sc.nextLine());
                 return value1;
             } catch (IllegalArgumentException a) {
-                System.err.println("Error: " + a.getMessage());
+                System.err.println("Error đúng định dang: " + a.getMessage());
                 a.printStackTrace();
             } catch (Exception e) {
-                System.err.println("Error: " + e.getMessage());
+                System.err.println("Error: nhập sai định dang " + e.getMessage());
                 e.printStackTrace();
             }
         }
