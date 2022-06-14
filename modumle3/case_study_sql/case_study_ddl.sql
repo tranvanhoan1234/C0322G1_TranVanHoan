@@ -5,15 +5,18 @@ create database case_furama;
 use case_furama;
 create table vi_tri(
 ma_vi_tri int auto_increment primary key,
-ten_vi_tri varchar(45)
+ten_vi_tri varchar(45),
+`status` bit(1) default 0
 );
 create table trinh_do(
 ma_trinh_do int auto_increment primary key,    -- au to tự tăng
-ten_trinh_do varchar(45)
+ten_trinh_do varchar(45),
+`status` bit(1) default 0
 );
 create table bo_phan(
 ma_bo_phan int auto_increment primary key,
-ten_bo_phan varchar(45)
+ten_bo_phan varchar(45),
+`status` bit(1) default 0
 );
 create table nhan_vien(
 ma_nhan_vien int auto_increment primary key,
@@ -32,7 +35,8 @@ ma_trinh_do int,
 foreign key(ma_trinh_do) references trinh_do(ma_trinh_do),
 
 ma_bo_phan int,
-foreign key(ma_bo_phan) references bo_phan(ma_bo_phan)
+foreign key(ma_bo_phan) references bo_phan(ma_bo_phan),
+`status` bit (1) default 0
 );
 create table loai_khach(
 ma_loai_khach int auto_increment primary key, -- id tự tăng
@@ -48,15 +52,18 @@ gioi_tinh bit(1),
 so_cmnd varchar(45),
 so_dien_thoai varchar(45),
 email varchar (45),
-dia_chi varchar (45)
+dia_chi varchar (45),
+`status` bit(1) default 0
 );
 create table kieu_thue(
 ma_kieu_thue int auto_increment primary key,
-ten_kieu_thue varchar(45)
+ten_kieu_thue varchar(45),
+`status` bit(1) default 0
 );
 create table loai_dich_vu(
 ma_loai_dich_vu int auto_increment primary key,
-ten_loai_dich_vu varchar(45)
+ten_loai_dich_vu varchar(45),
+`status` bit(1) default 0
 );
 create table dich_vu(
 ma_dich_vu int auto_increment primary key,
@@ -71,7 +78,8 @@ foreign key(ma_loai_dich_vu) references loai_dich_vu(ma_loai_dich_vu),
 tieu_chuan_phong varchar(45),
 mo_ta_tien_nghi_khac varchar(45),
 dien_tich_ho_boi double,
-so_tang int
+so_tang int,
+`status` bit(1) default 0
 );
 create table hop_dong(
 ma_hop_dong int auto_increment primary key,
@@ -83,14 +91,16 @@ foreign key (ma_nhan_vien) references nhan_vien(ma_nhan_vien),
 ma_khach_hang int,
 foreign key(ma_khach_hang) references khach_hang(ma_khach_hang),
 ma_dich_vu int,
-foreign key(ma_dich_vu) references dich_vu(ma_dich_vu)
+foreign key(ma_dich_vu) references dich_vu(ma_dich_vu),
+`status` bit(1) default 0
 );
 create table dich_vu_di_kem(
 ma_dich_vu_di_kem int auto_increment primary key,
 ten_dich_vu_di_kem varchar(45),
 gia double,
 don_vi varchar(10),
-trang_thai varchar(45)
+trang_thai varchar(45),
+`status` bit(1) default 0
 ); 
 create table hop_dong_chi_tiet(
 ma_hop_dong_chi_tiet int auto_increment primary key,
@@ -98,7 +108,9 @@ so_luong int,
 ma_hop_dong int,
 foreign key(ma_hop_dong) references hop_dong (ma_hop_dong),
 ma_dich_vu_di_kem int,
-foreign key(ma_dich_vu_di_kem) references dich_vu_di_kem(ma_dich_vu_di_kem));
+foreign key(ma_dich_vu_di_kem) references dich_vu_di_kem(ma_dich_vu_di_kem),
+`status` bit(1) default 0
+);
 insert into vi_tri(ten_vi_tri)
 value ('quản lý'),('nhân viên');
 insert into trinh_do(ma_trinh_do,ten_trinh_do)
@@ -158,9 +170,8 @@ value ('2020-12-08','2020-12-08',0,3,1,3),
 ('2021-06-17','2021-06-18',150000,3,4,1),
 ('2020-11-19','2020-11-19',0,3,4,3),
 ('2021-04-12','2021-04-14',0,10,3,5),
-('2021-04-25','2021-04-25',0,2,2,1),
 ('2021-04-25','2021-04-25',0,2,2,1);
 insert into hop_dong_chi_tiet (so_luong,ma_hop_dong,ma_dich_vu_di_kem)
-value (1,2,3),(5,2,4),(8,2,5),(1,3,1),(11,3,2),(1,1,3),(2,1,2),(2,12,2);
+value (1,2,3),(5,2,4),(8,2,5),(1,3,1),(11,3,2),(1,1,3),(2,1,2),(2,11,2);
 
  
