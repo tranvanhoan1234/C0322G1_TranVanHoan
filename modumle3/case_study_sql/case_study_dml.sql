@@ -128,7 +128,7 @@ select dich_vu_di_kem.ma_dich_vu_di_kem, dich_vu_di_kem.ten_dich_vu_di_kem, sum(
 from dich_vu_di_kem
 join hop_dong_chi_tiet  on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
 group by dich_vu_di_kem.ma_dich_vu_di_kem
-having sum(hop_dong_chi_tiet.so_luong) >=
+having sum(hop_dong_chi_tiet.so_luong) >= all
  (select sum(hop_dong_chi_tiet.so_luong) 
 from dich_vu_di_kem 
 join hop_dong_chi_tiet  on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
@@ -195,13 +195,50 @@ join hop_dong on khach_hang.ma_khach_hang=hop_dong.ma_khach_hang
 where year(ngay_lam_hop_dong) < '2021') temp_table);
 
 -- 19.	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+create view gia as
+select dich_vu_di_kem.ma_dich_vu_di_kem
+from dich_vu_di_kem 
+left join hop_dong_chi_tiet on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+left join hop_dong  on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+where year(hop_dong.ngay_lam_hop_dong) = 2020
+group by dich_vu_di_kem.ma_dich_vu_di_kem
+having sum(hop_dong_chi_tiet.so_luong) > 10;
 
+update dich_vu_di_kem
+set gia =gia *2
+where ma_dich_vu_di_kem in(select *from gia);
+select *from dich_vu_di_kem;
 
+-- ----
+set sql_safe_updates = 0;
+ update dich_vu_di_kem
+ set dich_vu_di_kem.gia = gia * 2
+ where dich_vu_di_kem.ma_dich_vu_di_kem in
+ (
+select hop_dong_chi_tiet.ma_dich_vu_di_kem from hop_dong_chi_tiet
+inner join hop_dong on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
+where hop_dong_chi_tiet.so_luong > 10 and year(hop_dong.ngay_lam_hop_dong) = 2020
+);
 -- 20.	Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
 select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten, nhan_vien.email, nhan_vien.so_dien_thoai, nhan_vien.ngay_sinh,
  nhan_vien.dia_chi from nhan_vien
 union
 select khach_hang.ma_khach_hang, khach_hang.ho_ten, khach_hang.email, khach_hang.so_dien_thoai, khach_hang.ngay_sinh, 
 khach_hang.dia_chi from khach_hang;
- 
- 
+
+
+-- 21.	Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Hải Châu” và
+-- đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “12/12/2019”.
+create view v_nhan_vien as
+select nv.* from nhan_vien nv
+join hop_dong hd on nv.ma_nhan_vien =hd.ma_nhan_vien
+where nv.dia_chi LIKE '%huế%' and hd.ngay_lam_hop_dong='2021/07/14'
+group by nv.ma_nhan_vien;
+
+
+-- 22.	Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Liên Chiểu” đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn này.
+
+set sql_safe_updates = 0;
+
+   
+

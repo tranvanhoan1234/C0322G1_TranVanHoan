@@ -1,5 +1,4 @@
 drop database if exists case_furama;
-truncate table case_furama;
 -- để xóa sql nếu nó đã tồn tại
 create database case_furama;
 
