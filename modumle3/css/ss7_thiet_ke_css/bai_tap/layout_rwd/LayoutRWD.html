@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        [class*="col-"] {
+            float: left;
+        }
+
+        .row::after {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+            border-right:1px solid #bbb;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+        .container-body-left{
+            background-color: whitesmoke;
+            height: 1000px;
+
+
+        }
+        .container-body-end{
+
+            background-color: whitesmoke;
+            height: 1000px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="row">
+    <div class="container-tieude col-12">
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li style="float:right"><a href="#about">About</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="container-body">
+        <div class="container-body-left col-3">
+            <div style="margin-left: 100px ;padding-top: 50px" >link</div>
+            <div style="margin-left: 100px"> link</div>
+            <div style="margin-left: 100px">link</div>
+            <div style="margin-left: 100px">link</div>
+            <div style="margin-left: 100px">link</div>
+        </div>
+        <div class=" container-body-center col-6">
+            <div style="padding-top: 50px" > <h1> Welcome</h1>
+                <p>
+                Chú bồ câu đực và cô bồ câu cái rất yêu thương nhau từ lúc mua về đến giờ chúng luôn gần gũi, gắn bó với nhau. Bộ lông của chúng mềm mượt như nhung lụa có thêm những vệt xám lốm đốm nổi bật trên lưng, đôi cánh to dang rộng và cái đuôi xòe ra như chiếc quạt giấy của bà em phe phẩy mỗi ngày. Cổ của nó ngắn ngắn, phần vai mập mập, đầy đặn. Đôi chân nhỏ xíu màu hồng nhạt với những móng vuốt sắc nhọn để bám thật chắc vào cây gỗ trong ngôi nhà mới xinh xắn. Đôi mắt bồ cô đẹp lắm! Một đôi mắt tròn xoe, đen nháy như hòn bi ve nho nhỏ mà em hay chơi với viền mắt màu hồng nổi lên trên nền màu trắng ở phần đầu. Chiếc mỏ của nó có màu vàng đậm, rất cứng để mổ thức ăn là cám viên dành cho các loài chim.
+                Khi mổ thức ăn nó làm rất nhanh nhưng ăn rất chậm, ăn được một lúc nó lại uống nước để bớt khô cổ.
+            </p></div>
+            <div style="border-top:solid 1px ;padding-top: 30px">
+                <p>Misa lớn rất là nhanh. Lúc bà cho em, nó chỉ to bằng bắp chân của em bây giờ chú không những lớn nhanh mà còn rất khỏe khoắn, chú có một thân hình đẹp cân đối, bộ lông của chú mượt và mịn như nhung. Hai cái lỗ tai của Misa nhọn, luôn vểnh lên nhìn rất đáng yêu như để nghe ngóng mọi động tĩnh xung quanh mình, Misa rất thông minh và ngoan ngoãn. Chiếc mũi của chú ướt ướt luôn hếch lên để đánh hơi lạ. chú ta có một hàm răng sắc, khi nhìn thấy chú chắc chắn không có tên trộm nào đến gần.
+
+                    Chú đi đứng rất nhẹ nhàng và chạy rất nhanh. Sáng nào cũng vậy, Misa đùa với chú mèo đen ngoài sân. Đùa chán, chú lại tìm chỗ nào đó mát để nằm. Misa nằm sấp gác mõm lên hai chân trước của mình, lim dim ngủ, tưởng như chú ngủ rất ngon nhưng không phải thế nhé! chú sẽ luôn luôn đứng phắt dậy khi khi nghe có tiếng động hoặc ngửi thấy mùi lạ nào đó. Nếu là người lạ, chú ta liền tỏ ra hung dữ nhe nanh, gầm gừ như muốn nói: “Hãy ra khỏi đây nhanh nào!” nhưng ngược lại đối với thành viên trong gia đình em khi đi đâu vê chỉ cần đến đầu ngõ thôi, chú đã biết và luôn luôn chạy ngay ra cổng đón, chú còn chạy quanh người đuôi thì ngoáy tít lên vì vui sướng, những lúc đó thật là vui, bài văn tả con chó mà em yêu quý nhất.
+
+                    Nhà em tất cả các thành viên ai cũng thích Misa. Chú như một thành viên quan trọng trong gia đình em. Trước khi đi ngủ, chú luôn đi vòng quanh kiểm tra quanh nhà xem có gì đó bất thường không khiến nhà em luôn yên tâm ngủ sau một ngày làm việc, học tập mệt mỏi, căng thẳng.</p>
+            </div>
+
+        </div>
+        <div class="container-body-end  col-3">
+<div style="height: 70px ;width: 150px;border:solid 1px ; margin: 100px 0px 0px 100px ;padding: 0px 100px"> siêu cấp vip pro</div>
+<div style="height: 70px ;width: 150px;border:solid 1px ; margin: 100px 0px 0px 100px ;padding: 0px 100px"> siêu cấp vip pro</div>
+
+
+
+        </div>
+
+    </div>
+</div>
+<div class="row"></div>
+</body>
+</html>
