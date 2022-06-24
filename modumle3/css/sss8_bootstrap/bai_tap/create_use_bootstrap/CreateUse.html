@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        div.gallery {
+            border: 1px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 20px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <h2>Responsive Image Gallery</h2>
+    <h4>Resize the browser window to see the effect.</h4>
+    <div class="responsive row  ">
+            <div class="gallery col-lg-3 col-md-6 col-sm-12 ">
+                <a target="_blank"
+                   href="https://www.google.com/search?q=danh+lam+thang+canh&sxsrf=ALiCzsZbXkJgc0lM3ND6npWRFuOBhZEIfg:1656041567162&tbm=isch&source=iu&ictx=1&vet=1&fir=R3Zu_mGkCilDBM%252CSm848QXTRrQw-M%252C_%253B9e7ueE5AVT0B6M%252C_lN_vSvEFoK9qM%252C_&usg=AI4_-kTbFHYokggdN6R9FaM3aFhWnJwd0A&sa=X&ved=2ahUKEwi09N_Kk8X4AhVWAYgKHbK2BhIQ_h16BAgXEAE&biw=1366&bih=657&dpr=1#imgrc=R3Zu_mGkCilDBM">
+                    <img src="https://demo.codegym.vn/web/15/gallery/img_fjords.jpg" alt="Trolltunga Norway" width="100%">
+                </a>
+                <div class="desc">Add a description of the image here</div>
+            </div>
+
+        <div  class="gallery col-lg-3 col-md-6 col-sm-12" >
+                <a target="_blank"
+                   href="https://baoquangninh.com.vn/top-7-danh-lam-thang-canh-noi-tieng-o-viet-nam-2400949.html">
+                    <img src="https://demo.codegym.vn/web/15/gallery/img_forest.jpg" alt="Forest" width="100%"
+                       >
+                </a>
+                <div class="desc">Add a description of the image here</div>
+            </div>
+
+            <div class="gallery  col-lg-3 col-md-6 col-sm-12 ">
+                <a target="_blank" href="https://baoquangninh.com.vn/du-lich/diem-den-tron-ven">
+                    <img src="https://demo.codegym.vn/web/15/gallery/img_lights.jpg" alt="Northern Lights" width="100%"
+                         >
+                </a>
+                <div class="desc">Add a description of the image here</div>
+            </div>
+
+            <div class="gallery col-lg-3 col-md-6 col-sm-12">
+                <a target="_blank"
+                   href="https://baoquangninh.com.vn/tuoi-tre-cong-an-quang-ninh-ban-linh-xung-kich-lap-cong-vi-antq-3192467.html">
+                    <img src="https://demo.codegym.vn/web/15/gallery/img_mountains.jpg" alt="Mountains" width="100%"
+                        >
+                </a>
+                <div class="desc">Add a description of the image here</div>
+            </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div style="padding:6px;">
+        <p>This example use media queries to re-arrange the images on different screen sizes: for screens larger than
+            700px wide, it will show four images side by side, for screens smaller than 700px, it will show two images
+            side by side. For screens smaller than 500px, the images will stack vertically (100%).</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
