@@ -1,35 +1,46 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 6/27/2022
-  Time: 3:58 PM
+  Date: 6/28/2022
+  Time: 1:17 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <title>$Title$</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   </head>
   <body>
-  <form action="/discount" method="post">
-  <select class="form-select" aria-label="Default select example" name="sanPham">
-    <option selected>chọn sản phẩm</option>
-    <option value="Keo Cay">kẹo cay</option>
-    <option value="Sua Chua">sữa chua</option>
-    <option value="Dau Tay">dâu tây</option>
-  </select>
-    <div class="mb-3">
-      <label for="price" class="form-label">List Price</label>
-      <input type="text" class="form-control" id="price" name="price" placeholder="Giá niêm yết của sản phẩm">
-    </div>
-
-    <div class="mb-3">
-      <label for="percent" class="form-label">Discount Percent</label>
-      <input type="text" class="form-control" id="percent" name="percent" placeholder="Tỷ lệ chiết khấu (phần trăm)">
-    </div>
-    <button type="submit" id="CalculateDiscount" class="btn btn-secondary btn-lg">Calculate Discount</button>
-    </form>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <h1>Simple Calculator</h1>
+  <form method="post" action="/calculate">
+    <fieldset>
+      <legend>Calculator</legend>
+      <table>
+        <tr>
+          <td>First operand: </td>
+          <td><input name="first-operand" type="text"/></td>
+        </tr>
+        <tr>
+          <td>Operator: </td>
+          <td>
+            <select name="operator">
+              <option value="+">+</option>
+              <option value="-">-</option>
+              <option value="*">*</option>
+              <option value="/">/</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Second operand: </td>
+          <td><input name="second-operand" type="text"/></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Calulate"/></td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
   </body>
 </html>
