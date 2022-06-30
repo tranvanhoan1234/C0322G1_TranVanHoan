@@ -19,7 +19,8 @@
     <input type="submit" value="press me">
 </form>
 <a href="/products?action=create">tạo mới product</a>
-<table border="1">
+
+<table border="1" >
     <tr>
         <th>Tên</th>
         <th>Giá</th>
@@ -38,3 +39,5 @@
         </tr>
     </c:forEach>
 </table>
+<body>
+<html>

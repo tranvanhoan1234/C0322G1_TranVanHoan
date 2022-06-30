@@ -12,7 +12,10 @@
 </head>
 <body>
 <h1> tạo mới product</h1>
-<form method="post" >
+<p>
+    <a href="/list.jsp">Back to customer list</a>
+</p>
+<form method="post">
     <fieldset>
         <legend>thông tin sản phẩm</legend>
  <table>
@@ -40,5 +43,6 @@
     </fieldset>
 
 </form>
+
 </body>
 </html>
