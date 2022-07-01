@@ -1,7 +1,7 @@
 package controller;
 
-import model.User;
-import model.UserDAO;
+import model.model.User;
+import model.service.UserDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;

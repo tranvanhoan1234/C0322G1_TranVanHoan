@@ -1,4 +1,6 @@
-package model;
+package model.service;
+import model.model.User;
+
 import java.sql.SQLException;
 import java.util.List;
 

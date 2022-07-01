@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  model.User: Admin
+  model.model.User: Admin
   Date: 30/6/2022
   Time: 5:02 PM
   To change this template use File | Settings | File Templates.

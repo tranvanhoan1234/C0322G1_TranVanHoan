@@ -1,4 +1,7 @@
-package model;
+package model.service;
+import model.model.User;
+import model.service.IUserDAO;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
