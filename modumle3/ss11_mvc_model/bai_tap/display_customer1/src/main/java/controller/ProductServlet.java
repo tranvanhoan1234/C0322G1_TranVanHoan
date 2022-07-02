@@ -1,8 +1,8 @@
 package controller;
 
-import model.Product;
-import model.service.IProductService;
-import model.service.ProductServiceImpl;
+import model.product.Product;
+import model.service.ProductService;
+import model.service.impl.ProductServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +15,7 @@ import java.util.List;
 @WebServlet(name = "ProductServlet" , urlPatterns ="/products")
 public class ProductServlet extends HttpServlet {
 
-    private IProductService productService = new ProductServiceImpl();
+    private ProductService productService = new ProductServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -71,7 +71,7 @@ public class ProductServlet extends HttpServlet {
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> productList = productService.findAll();
         request.setAttribute("products",productList);
-        request.getRequestDispatcher("/list.jsp").forward(request,response);
+        request.getRequestDispatcher("view/product/list.jsp").forward(request,response);
     }
 
     private void showSearchProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -84,8 +84,8 @@ public class ProductServlet extends HttpServlet {
         }
         else{
             request.setAttribute("products", product);
-            request.getRequestDispatcher("/search.jsp").forward(request, response);
-            response.sendRedirect("delete.jsp");
+            request.getRequestDispatcher("view/product/search.jsp").forward(request, response);
+            response.sendRedirect("view/product/delete.jsp");
         }
 
     }
@@ -98,7 +98,7 @@ public class ProductServlet extends HttpServlet {
         }
         else{
             request.setAttribute("products",product);
-            request.getRequestDispatcher("/search.jsp").forward(request, response);
+            request.getRequestDispatcher("view/product/search.jsp").forward(request, response);
         }
 
     }
@@ -111,7 +111,7 @@ public class ProductServlet extends HttpServlet {
         }
         else{
             request.setAttribute("products", product);
-            request.getRequestDispatcher("/detail.jsp").forward(request, response);
+            request.getRequestDispatcher("view/product/detail.jsp").forward(request, response);
 //            response.sendRedirect("product/delete.jsp");
         }
 
@@ -136,7 +136,7 @@ public class ProductServlet extends HttpServlet {
         }
         else{
             request.setAttribute("products", product);
-            request.getRequestDispatcher("update.jsp").forward(request, response);
+            request.getRequestDispatcher("view/product/update.jsp").forward(request, response);
         }
 
     }
@@ -168,7 +168,7 @@ public class ProductServlet extends HttpServlet {
         }
         else{
             request.setAttribute("products", product);
-            request.getRequestDispatcher("delete.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/product/delete.jsp").forward(request, response);
 //            response.sendRedirect("product/delete.jsp");
         }
 
@@ -192,7 +192,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showCreateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("create.jsp").forward(request, response);
+        request.getRequestDispatcher("view/product/create.jsp").forward(request, response);
 
     }
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -204,6 +204,6 @@ public class ProductServlet extends HttpServlet {
         int id = (int) (Math.random()* 1000);
         Product product = new Product(id, name, price, descriptionOfThe, producer);
         this.productService.create(product);
-        response.sendRedirect("create.jsp");
+        response.sendRedirect("view/product/create.jsp");
     }
 }
