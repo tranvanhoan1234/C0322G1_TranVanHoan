@@ -3,12 +3,9 @@ import model.model.User;
 import ripostory.database.Database;
 import ripostory.impl.IUserDAO;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 
 public class UserDAO implements IUserDAO {
@@ -157,6 +154,81 @@ public class UserDAO implements IUserDAO {
         return users;
     }
 
+    @Override
+    public void procedureUpdate(int id, User user) {
+        try {
+            CallableStatement callableStatement = database.getConnection().prepareCall("CALL update_infomation(?, ?, ?, ?)");
+            callableStatement.setString(1, user.getName());
+            callableStatement.setString(2, user.getEmail());
+            callableStatement.setString(3, user.getCountry());
+            callableStatement.setInt(4, user.getId());
+            callableStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void procedureDelete(int id) {
+        try {
+            CallableStatement callableStatement = database.getConnection().prepareCall("CALL delete_infomation( ?)");
+            callableStatement.setInt(1, id);
+            callableStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public String callTransaction() {
+        String msg = "giao dich thành công!";
+        Connection connection = database.getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
+            preparedStatement.setString(1, "phương");
+            preparedStatement.setString(2, "0");
+            preparedStatement.setString(3, "1");
+
+            int rowAffect = preparedStatement.executeUpdate();
+
+            PreparedStatement preparedStatementS = connection.prepareStatement(INSERT_USERS_SQL);
+            preparedStatement.setString(1, "HOAN");
+            preparedStatement.setString(2, "0");
+            preparedStatement.setString(3, "1");
+
+            rowAffect += preparedStatementS.executeUpdate();
+
+            if (rowAffect == 2) {
+                PreparedStatement preparedStatementSs = connection.prepareStatement(INSERT_USERS_SQL);
+                preparedStatement.setString(1, "hoang");
+                preparedStatement.setString(2, "1");
+                preparedStatement.setString(3, "2");
+
+                rowAffect += preparedStatementSs.executeUpdate();
+            }
+
+            if (rowAffect == 3) {
+                connection.commit();
+            } else {
+                msg = "Rollback";
+                connection.rollback();
+            }
+        } catch (SQLException e) {
+            try {
+                msg = "Rollback";
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        }
+        return msg;
+    }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
@@ -170,8 +242,9 @@ public class UserDAO implements IUserDAO {
                     t = t.getCause();
                 }
             }
-        }
     }
+    }
+
 }
 
 

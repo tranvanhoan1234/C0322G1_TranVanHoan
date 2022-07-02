@@ -18,6 +18,11 @@ public interface IUserDAO {
     List<User> searchByCountry(String searchValue);
 
     List<User> sortUserByName();
+    void procedureUpdate(int id, User user);
+
+    void procedureDelete(int id);
+
+    String callTransaction();
 }
 
 
