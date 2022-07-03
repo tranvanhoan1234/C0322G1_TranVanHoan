@@ -1,4 +1,4 @@
-package ripostory.impl;
+package repostory.impl;
 import model.model.User;
 
 import java.sql.SQLException;

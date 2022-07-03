@@ -1,7 +1,7 @@
-package model.service.impl;
+package repostory.impl;
 import model.model.User;
-import ripostory.database.Database;
-import ripostory.impl.IUserDAO;
+import database.Database;
+import repostory.impl.IUserDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
