@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b7f4125-5c63-454a-8a65-2e3d72e3a884" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/controller/ProductServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/repository/IProductRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/repository/ProductRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/service/IProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/service/ProductServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/repository/IProductRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/repository/ProductRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/severice/IProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/severice/ProductServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/create.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/delete.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/detail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/search.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../apache-tomcat-9.0.64/webapps/ROOT/update.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/controller/UserServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/model/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/repository/IUserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/repository/datebase/Database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/service/IUserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/WEB-INF/classes/service/impl/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/create.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.64/webapps/ROOT/list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/database_demo.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/database_demo.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/config/CharsetFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/config/CharsetFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/connection/DBConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/connection/DBConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/controller/ProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/ICategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/ICategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/IProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/IProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/impl/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/impl/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/impl/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/repository/impl/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/ICategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/ICategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/impl/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/impl/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/impl/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/java/service/impl/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/webapp/view/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/webapp/view/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/webapp/view/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../luyen_tap_product/product_mangment/src/main/webapp/view/list.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="2BRK5LjCsqvCTZiwAyLAA1GNnEK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b7f4125-5c63-454a-8a65-2e3d72e3a884" name="Default Changelist" comment="" />
+      <created>1656863272264</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656863272264</updated>
+      <workItem from="1656863277873" duration="201000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="163" y="0" key="#Project_Structure" timestamp="1656863365053">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="163" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1656863365053" />
+    <state x="462" y="119" key="FileChooserDialogImpl" timestamp="1656863483421">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="462" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1656863483421" />
+    <state x="65" y="0" key="new project wizard" timestamp="1656863487744">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="65" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1656863487744" />
+  </component>
+</project>
